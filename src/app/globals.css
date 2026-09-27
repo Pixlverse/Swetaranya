@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+/*
+ * Swetaranya brand tokens (CLAUDE.md §3.1).
+ * Tailwind's default palette is cleared so only brand colours exist as utilities —
+ * an ad hoc `bg-orange-500` will simply not compile to anything.
+ */
+@theme {
+  --color-*: initial;
+  --color-keppel: #59aa99;
+  --color-nordic: #1d393c;
+  --color-terracotta: #aa6a59;
+  --color-clay: #5e2b1e;
+  --color-blush: #dd9188;
+  --color-cream: #f7f9f8;
+  --color-ink: #14201f;
+  /* The off-white ground baked into the official logo PNGs in /public. Only for shapes that hold a logo. */
+  --color-logo-ground: #f9faf7;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-heading: var(--font-taviraj), "Taviraj", Georgia, serif;
+  --font-body: var(--font-orkney), "Orkney", system-ui, sans-serif;
+  --font-sans: var(--font-orkney), "Orkney", system-ui, sans-serif;
+
+  /* Radius follows hierarchy, not habit: square editorial blocks, hairline controls,
+     and one signature "leaf" frame reserved for imagery. */
+  --radius-*: initial;
+  --radius-none: 0;
+  --radius-hair: 2px;
+  --radius-soft: 6px;
+  --radius-pill: 999px;
+
+  --ease-calm: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --breakpoint-xs: 26rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    font-family: var(--font-body);
+    background: var(--color-cream);
+    color: var(--color-ink);
+    line-height: 1.65;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--color-nordic);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-keppel);
+    color: var(--color-cream);
+  }
+  /* Visible keyboard focus everywhere; mouse clicks stay clean. */
+  :focus-visible {
+    outline: 2px solid var(--color-keppel);
+    outline-offset: 3px;
+    border-radius: var(--radius-hair);
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--color-cream);
+  }
+}
+
+@layer components {
+  /* Signature image frame — the drop/leaf silhouette from the brandmark. */
+  .frame-leaf {
+    border-radius: 0 9rem 0 9rem;
+    overflow: hidden;
+  }
+  .frame-drop {
+    border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+    overflow: hidden;
+  }
+  .prose-swet {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-ink);
+  }
+  .prose-swet > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-swet h2 {
+    font-size: 1.75rem;
+    margin-top: 2em;
+  }
+  .prose-swet h3 {
+    font-size: 1.35rem;
+    margin-top: 1.6em;
+  }
+  .prose-swet a {
+    color: var(--color-nordic);
+    text-decoration: underline;
+    text-decoration-color: var(--color-keppel);
+    text-underline-offset: 3px;
+  }
+  .prose-swet ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .prose-swet ul li {
+    padding-left: 1.4em;
+    position: relative;
+  }
+  .prose-swet ul li::before {
+    content: "";
+    position: absolute;
+    left: 0.2em;
+    top: 0.72em;
+    width: 0.45em;
+    height: 0.45em;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    background: var(--color-keppel);
+  }
+  .prose-swet blockquote {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--color-nordic);
+    border-left: 2px solid var(--color-terracotta);
+    padding-left: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Symbol loader ---------- */
+.ld-air {
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0.35;
+  stroke-dasharray: 1;
+  animation: ld-trace 2.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+.ld-drop {
+  fill: currentColor;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: ld-breathe 2.6s ease-in-out infinite;
+}
+.ld-land {
+  fill: currentColor;
+}
+@keyframes ld-trace {
+  0% {
+    stroke-dashoffset: 1;
+    fill-opacity: 0;
+    opacity: 1;
+  }
+  45% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0;
+  }
+  62% {
+    fill-opacity: 1;
+  }
+  84% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+    opacity: 0.15;
+  }
+}
+@keyframes ld-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(-4%) scale(1);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ld-air,
+  .ld-drop {
+    animation: none !important;
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- First-visit splash ---------- */
+.site-splash {
+  /* Fallback: even if JavaScript never runs, the splash lifts itself after 3s. */
+  animation: splash-lift 0.6s ease 3s forwards;
+  transition: opacity 0.6s ease, visibility 0.6s;
+}
+.site-splash.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+html[data-splash="seen"] .site-splash {
+  display: none;
+}
+@keyframes splash-lift {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
