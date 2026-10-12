@@ -250,7 +250,7 @@ export function EnquiryForm({ initialTopic, retentionDays }: { initialTopic?: (t
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center gap-3 rounded-pill bg-keppel px-8 py-3.5 font-bold text-white transition-colors duration-300 hover:bg-nordic disabled:opacity-70"
+          className="inline-flex items-center justify-center gap-3 rounded-pill bg-keppel px-8 py-3.5 font-bold text-nordic transition-colors duration-300 hover:bg-nordic hover:text-cream disabled:opacity-70"
         >
           {isSubmitting && <span aria-hidden className="h-4 w-4 animate-spin rounded-pill border-2 border-white/40 border-t-white" />}
           {isSubmitting ? "Sending" : "Send to the physician"}
@@ -267,7 +267,7 @@ function Submitted({ result }: { result: Result }) {
   return (
     <div role="status" aria-live="polite" className="py-4">
       <DrawnCheck className="h-16 w-16 text-keppel" />
-      <h2 className="mt-6 text-[clamp(2rem,4vw,3rem)]">Thank you. Your message is with us.</h2>
+      <h2 className="mt-6 text-[clamp(1.8rem,3.07vw,2.3rem)]">Thank you. Your message is with us.</h2>
       <p className="mt-4 max-w-lg text-[1.05rem] text-ink/80">
         Dr. Thrivikraman or a member of the family will reply personally, usually within a day. We&apos;ve sent a copy to your email.
       </p>

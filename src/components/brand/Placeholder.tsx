@@ -1,4 +1,17 @@
+import Image from "next/image";
 import { useId } from "react";
+
+/**
+ * While the real photographs are being taken, slots show a dummy photo so the layout can be judged
+ * at its true weight. Set to false to go back to the hatched "Photograph to come" boxes.
+ */
+export const SHOW_DUMMY_IMAGES = true;
+
+/** A stable dummy photograph for a slot: the same caption always gets the same picture. */
+export function dummyImageUrl(seed: string, width = 1600, height = 1200) {
+  const slug = seed.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 60) || "swetaranya";
+  return `https://picsum.photos/seed/${slug}/${width}/${height}`;
+}
 
 /**
  * Obvious photo placeholder. Real photographs of Swetaranya replace these — never stock imagery.
@@ -19,6 +32,16 @@ export function Placeholder({
 }) {
   const id = useId().replace(/:/g, "");
   const frame = { rect: "", leaf: "frame-leaf", drop: "frame-drop", arch: "rounded-t-[999px]" }[shape];
+  const curved = shape !== "rect";
+
+  if (SHOW_DUMMY_IMAGES) {
+    return (
+      <div role="img" aria-label={`Dummy image, to be replaced with: ${label}`} className={`relative overflow-hidden bg-nordic/10 ${frame} ${className}`}>
+        <Image src={dummyImageUrl(label)} alt="" fill unoptimized sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+      </div>
+    );
+  }
+
   const colors = tone === "light" ? "bg-cream text-nordic border-nordic/25" : "bg-nordic text-cream/80 border-cream/20";
   return (
     <div role="img" aria-label={`Photograph to come: ${label}`} className={`relative overflow-hidden border ${colors} ${frame} ${className}`}>
@@ -31,7 +54,7 @@ export function Placeholder({
         <rect width="100%" height="100%" fill={`url(#h${id})`} />
       </svg>
       {/* Curved frames clip corners, so their caption sits centred rather than bottom-left. */}
-      <div className={`absolute inset-0 flex p-4 sm:p-5 ${shape !== "rect" ? "items-center justify-center text-center" : captionAt === "top" ? "items-start justify-end" : "items-end"}`}>
+      <div className={`absolute inset-0 flex p-4 sm:p-5 ${curved ? "items-center justify-center text-center" : captionAt === "top" ? "items-start justify-end" : "items-end"}`}>
         <p className={`max-w-[26ch] text-[0.8rem] leading-snug ${tone === "light" ? "bg-cream/90" : "bg-nordic/90"} px-2.5 py-1.5`}>
           <span className="font-bold">Photograph to come:</span> {label}
         </p>

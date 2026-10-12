@@ -178,7 +178,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-1 sm:gap-2">
             <Link
               href="/talk-to-the-physician"
-              className="group rounded-pill bg-cream px-4 py-3.5 text-[0.9rem] font-bold text-nordic transition-colors duration-300 hover:bg-keppel hover:text-white sm:px-7 sm:py-4 sm:text-[1rem]"
+              className="group rounded-pill bg-cream px-4 py-3.5 text-[0.9rem] font-bold text-nordic transition-colors duration-300 hover:bg-keppel hover:text-nordic sm:px-7 sm:py-4 sm:text-[1rem]"
             >
               <RollLabel>Talk to the Physician</RollLabel>
             </Link>

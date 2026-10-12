@@ -19,7 +19,7 @@ export default async function JournalPage({ searchParams }: PageProps<"/journal"
   return (
     <div className="mx-auto max-w-[88rem] px-5 pb-24 pt-14 sm:px-8 md:pt-20">
       <header className="grid gap-8 md:grid-cols-12">
-        <h1 className="text-[clamp(3rem,8vw,7rem)] leading-[0.9] tracking-[-0.025em] md:col-span-6">The Journal</h1>
+        <h1 className="text-[clamp(2.3rem,4.91vw,4.3rem)] leading-[0.9] tracking-[-0.025em] md:col-span-6">The Journal</h1>
         <p className="self-end text-[1.05rem] text-ink/75 md:col-span-5 md:col-start-8">
           Notes from the house and the consulting room — written by Dr. Thrivikraman and the family, for guests before and after their stay.
         </p>
@@ -55,7 +55,7 @@ export default async function JournalPage({ searchParams }: PageProps<"/journal"
           <article className="grid gap-6 py-16 md:grid-cols-12 md:py-20">
             <p className="text-[0.9rem] font-bold text-terracotta md:col-span-3">{journalCategoryLabel(lead.category)}</p>
             <div className="md:col-span-8">
-              <h2 className="text-[clamp(2.2rem,5vw,4.2rem)] leading-[1.02]">
+              <h2 className="text-[clamp(1.9rem,3.45vw,2.9rem)] leading-[1.02]">
                 <Link href={`/journal/${lead.slug}`} className="transition-colors hover:text-keppel">
                   {lead.title}
                 </Link>

@@ -93,8 +93,8 @@ export function DayTimeline({ moments }: { moments: readonly Moment[] }) {
               aria-live="polite"
               className="mt-6"
             >
-              <p className="font-heading text-[clamp(3rem,7vw,5rem)] leading-none tabular-nums text-keppel">{m.time}</p>
-              <h3 className={`mt-3 text-[clamp(1.6rem,3vw,2.3rem)] ${evening ? "text-cream" : ""}`}>{m.title}</h3>
+              <p className="font-heading text-[clamp(2.3rem,4.62vw,3.3rem)] leading-none tabular-nums text-keppel">{m.time}</p>
+              <h3 className={`mt-3 text-[clamp(1.6rem,2.54vw,1.95rem)] ${evening ? "text-cream" : ""}`}>{m.title}</h3>
               <p className={`mt-3 max-w-md text-[1.05rem] ${evening ? "text-cream/80" : "text-ink/80"}`}>{m.body}</p>
             </motion.div>
           </AnimatePresence>

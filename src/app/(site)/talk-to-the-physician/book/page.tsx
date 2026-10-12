@@ -19,7 +19,7 @@ export default async function BookPage({ searchParams }: PageProps<"/talk-to-the
   if (!token || !enquiry) {
     return (
       <div className="mx-auto max-w-3xl px-5 py-24 sm:px-8">
-        <h1 className="text-[clamp(2.4rem,5vw,4rem)]">This booking link isn&apos;t valid any more.</h1>
+        <h1 className="text-[clamp(2rem,3.5vw,2.8rem)]">This booking link isn&apos;t valid any more.</h1>
         <p className="mt-6 text-[1.05rem] text-ink/75">
           Booking links last two weeks. Write to us again and we&apos;ll send you a new one — or simply reply to our email.
         </p>
@@ -34,7 +34,7 @@ export default async function BookPage({ searchParams }: PageProps<"/talk-to-the
   return (
     <div className="mx-auto grid max-w-[88rem] gap-12 px-5 pb-24 pt-14 sm:px-8 md:pt-20 lg:grid-cols-12">
       <header className="lg:col-span-4">
-        <h1 className="text-[clamp(2.6rem,5.6vw,4.6rem)] leading-[0.98]">Choose a time to talk</h1>
+        <h1 className="text-[clamp(2.1rem,3.77vw,3.1rem)] leading-[0.98]">Choose a time to talk</h1>
         <p className="mt-6 text-[1.05rem] text-ink/80">
           Your first consultation with {PHYSICIAN_NAME} lasts about 45 minutes. Bring your questions, and any reports you have.
         </p>

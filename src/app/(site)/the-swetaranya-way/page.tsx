@@ -29,7 +29,7 @@ export default async function SwetaranyaWayPage() {
   return (
     <>
       <section className="mx-auto grid max-w-[88rem] gap-12 px-5 pb-16 pt-14 sm:px-8 md:pt-20 lg:grid-cols-12">
-        <h1 className="text-[clamp(3.2rem,9vw,8rem)] leading-[0.92] tracking-[-0.025em] lg:col-span-8">
+        <h1 className="text-[clamp(2.4rem,5.4vw,4.8rem)] leading-[0.92] tracking-[-0.025em] lg:col-span-8">
           <span className="block">Live.</span>
           <span className="block pl-[0.6em]">Heal.</span>
           <span className="block pl-[1.2em]">Learn.</span>
@@ -58,10 +58,10 @@ export default async function SwetaranyaWayPage() {
                 <Placeholder label={p.imageLabel} shape={SHAPES[i % SHAPES.length]} className="aspect-[4/5] w-full max-w-md" />
               </div>
               <div className={`md:col-span-6 ${i % 2 ? "md:order-1" : "md:col-start-7"}`}>
-                <p className="font-heading text-[clamp(3.5rem,7vw,5.5rem)] leading-none text-keppel" aria-hidden>
+                <p className="font-heading text-[clamp(2.55rem,4.52vw,3.55rem)] leading-none text-keppel" aria-hidden>
                   {p.word}
                 </p>
-                <h2 className="mt-4 text-[clamp(1.8rem,3.2vw,2.6rem)]">{p.heading}</h2>
+                <h2 className="mt-4 text-[clamp(1.7rem,2.58vw,2.1rem)]">{p.heading}</h2>
                 <div className="mt-5 space-y-4 text-[1.05rem] text-ink/80">
                   {paragraphs(p.body).map((para) => (
                     <p key={para}>{para}</p>
@@ -74,9 +74,9 @@ export default async function SwetaranyaWayPage() {
       </section>
 
       <section id="arrival" className="scroll-mt-32 border-y border-nordic/10 bg-white/60" aria-labelledby="arrival-heading">
-        <div className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-28">
+        <div className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24">
           <div className="mb-14 grid gap-6 md:grid-cols-12">
-            <h2 id="arrival-heading" className="text-[clamp(2.2rem,4.6vw,3.6rem)] md:col-span-7">
+            <h2 id="arrival-heading" className="text-[clamp(1.9rem,3.32vw,2.6rem)] md:col-span-7">
               {c.arrival.heading}
             </h2>
             <p className="self-end text-ink/75 md:col-span-4 md:col-start-9">{c.arrival.body}</p>
@@ -87,9 +87,9 @@ export default async function SwetaranyaWayPage() {
 
       <section id="food" className="on-dark relative isolate scroll-mt-32 bg-nordic text-cream" aria-labelledby="food-heading">
         <OrnamentPattern tone="cream" opacity={0.045} className="-z-10" />
-        <div className="mx-auto grid max-w-[88rem] gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-28">
+        <div className="mx-auto grid max-w-[88rem] gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-24">
           <div className="md:col-span-6">
-            <h2 id="food-heading" className="text-[clamp(2.2rem,4.6vw,3.6rem)] text-cream">
+            <h2 id="food-heading" className="text-[clamp(1.9rem,3.32vw,2.6rem)] text-cream">
               {c.food.heading}
             </h2>
             <p className="mt-6 max-w-xl text-[1.07rem] text-cream/80">{c.food.body}</p>
@@ -108,9 +108,9 @@ export default async function SwetaranyaWayPage() {
         </div>
       </section>
 
-      <section id="take-ayurveda-home" className="mx-auto max-w-[88rem] scroll-mt-32 px-5 py-20 sm:px-8 md:py-28" aria-labelledby="home-heading">
+      <section id="take-ayurveda-home" className="mx-auto max-w-[88rem] scroll-mt-32 px-5 py-20 sm:px-8 md:py-24" aria-labelledby="home-heading">
         <div className="grid gap-12 md:grid-cols-12">
-          <h2 id="home-heading" className="text-[clamp(2.2rem,4.6vw,3.6rem)] md:col-span-5">
+          <h2 id="home-heading" className="text-[clamp(1.9rem,3.32vw,2.6rem)] md:col-span-5">
             {c.takeHome.heading}
           </h2>
           <div className="md:col-span-6 md:col-start-7">

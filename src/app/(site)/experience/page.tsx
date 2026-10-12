@@ -22,9 +22,9 @@ export default async function ExperiencePage() {
   return (
     <>
       <section className="on-dark bg-nordic text-cream">
-        <div className="mx-auto max-w-[88rem] px-5 pb-20 pt-14 sm:px-8 md:pb-28 md:pt-20">
+        <div className="mx-auto max-w-[88rem] px-5 pb-20 pt-14 sm:px-8 md:pb-24 md:pt-20">
           <div className="mb-12 grid gap-6 md:grid-cols-12">
-            <h1 className="text-[clamp(2.8rem,7vw,6rem)] leading-[0.95] tracking-[-0.02em] text-cream md:col-span-7">
+            <h1 className="text-[clamp(2.2rem,4.43vw,3.8rem)] leading-[0.95] tracking-[-0.02em] text-cream md:col-span-7">
               {featured?.title ?? "A stay here, from the gate to the evening lamp"}
             </h1>
             <p className="self-end text-[1.05rem] text-cream/75 md:col-span-4 md:col-start-9">
@@ -37,9 +37,9 @@ export default async function ExperiencePage() {
       </section>
 
       {library.length > 0 && (
-        <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-28" aria-labelledby="library-heading">
+        <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24" aria-labelledby="library-heading">
           <div className="mb-10 grid gap-6 md:grid-cols-12">
-            <h2 id="library-heading" className="text-[clamp(2.2rem,4.6vw,3.6rem)] md:col-span-6">
+            <h2 id="library-heading" className="text-[clamp(1.9rem,3.32vw,2.6rem)] md:col-span-6">
               More from the house
             </h2>
             <p className="self-end text-ink/75 md:col-span-5 md:col-start-8">Short films on treatments, daily life and the ideas behind them.</p>
@@ -49,7 +49,7 @@ export default async function ExperiencePage() {
       )}
 
       <section className="mx-auto flex max-w-[88rem] flex-col gap-8 border-t border-nordic/10 px-5 py-20 sm:px-8 md:flex-row md:items-end md:justify-between">
-        <p className="max-w-2xl font-heading text-[clamp(1.7rem,3.2vw,2.6rem)] leading-tight text-nordic">
+        <p className="max-w-2xl font-heading text-[clamp(1.65rem,2.58vw,2.1rem)] leading-tight text-nordic">
           A film can only show so much. The rest is easier to explain in a conversation.
         </p>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-4">

@@ -15,7 +15,7 @@ export default async function UploadPage({ params }: PageProps<"/upload/[token]"
 
   return (
     <div className="mx-auto max-w-2xl px-5 pb-24 pt-14 sm:px-8 md:pt-20">
-      <h1 className="text-[clamp(2.4rem,5vw,3.8rem)] leading-[1]">Share your reports privately</h1>
+      <h1 className="text-[clamp(2rem,3.55vw,2.7rem)] leading-[1]">Share your reports privately</h1>
       {grant ? (
         <>
           <p className="mt-6 text-[1.05rem] text-ink/80">

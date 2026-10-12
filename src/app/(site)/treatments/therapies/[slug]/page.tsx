@@ -33,7 +33,7 @@ export default async function TherapyPage({ params }: PageProps<"/treatments/the
       <header className="mx-auto grid max-w-[88rem] gap-10 px-5 pb-12 pt-8 sm:px-8 md:grid-cols-12 md:pt-12">
         <div className="md:col-span-7">
           <p className="font-heading italic text-terracotta">{t.category === "panchakarma" ? "One of the five Panchakarma procedures" : "An individual Kerala therapy"}</p>
-          <h1 className="mt-3 text-[clamp(3.4rem,10vw,8.5rem)] leading-[0.9] tracking-[-0.03em]">{t.name}</h1>
+          <h1 className="mt-3 text-[clamp(2.5rem,5.94vw,5.05rem)] leading-[0.9] tracking-[-0.03em]">{t.name}</h1>
           <p className="mt-8 max-w-xl font-heading text-[clamp(1.35rem,2.4vw,1.8rem)] leading-snug text-nordic">{t.summary}</p>
         </div>
         <div className="md:col-span-4 md:col-start-9">

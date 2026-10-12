@@ -22,10 +22,10 @@ export function TestimonialQuotes({ items }: { items: TestimonialView[] }) {
 function Quote({ item, size, className = "" }: { item: TestimonialView; size: "lg" | "sm"; className?: string }) {
   return (
     <figure className={`relative ${className}`}>
-      <span aria-hidden className={`block font-heading leading-none text-blush ${size === "lg" ? "text-[7rem] -mb-12" : "text-[4rem] -mb-7"}`}>
+      <span aria-hidden className={`block font-heading leading-none text-blush ${size === "lg" ? "text-[5rem] -mb-9" : "text-[3rem] -mb-5"}`}>
         &ldquo;
       </span>
-      <blockquote className={`font-heading italic text-nordic ${size === "lg" ? "text-[clamp(1.6rem,3vw,2.4rem)] leading-snug" : "text-[1.3rem] leading-snug"}`}>
+      <blockquote className={`font-heading italic text-nordic ${size === "lg" ? "text-[clamp(1.6rem,2.5vw,2rem)] leading-snug" : "text-[1.3rem] leading-snug"}`}>
         {item.quote}
       </blockquote>
       <figcaption className="mt-5 text-[0.92rem] text-ink/70">

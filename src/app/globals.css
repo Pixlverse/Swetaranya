@@ -20,7 +20,7 @@
   --color-transparent: transparent;
   --color-current: currentColor;
 
-  --font-heading: var(--font-taviraj), "Taviraj", Georgia, serif;
+  --font-heading: var(--font-clarity-city), "Clarity City", system-ui, sans-serif;
   --font-body: var(--font-orkney), "Orkney", system-ui, sans-serif;
   --font-sans: var(--font-orkney), "Orkney", system-ui, sans-serif;
 

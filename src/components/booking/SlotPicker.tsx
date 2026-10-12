@@ -91,7 +91,7 @@ export function SlotPicker({ token, defaultMode, name }: { token: string; defaul
     return (
       <div role="status" aria-live="polite">
         <DrawnCheck className="h-16 w-16 text-keppel" />
-        <h2 className="mt-6 text-[clamp(2rem,4vw,3rem)]">Your consultation is booked, {name.split(" ")[0]}.</h2>
+        <h2 className="mt-6 text-[clamp(1.8rem,3.07vw,2.3rem)]">Your consultation is booked, {name.split(" ")[0]}.</h2>
         <p className="mt-4 text-[1.15rem] text-nordic">
           {fmt.long.format(new Date(selected.start))} at {fmt.time.format(new Date(selected.start))} your time
           <span className="text-ink/60"> ({fmt.kerala.format(new Date(selected.start))} in Kerala)</span>
@@ -177,7 +177,7 @@ export function SlotPicker({ token, defaultMode, name }: { token: string; defaul
                     aria-pressed={on}
                     onClick={() => setSelected(s)}
                     animate={{ y: on && !reduce ? -3 : 0 }}
-                    className={`rounded-soft border px-4 py-3 text-left transition-colors ${on ? "border-keppel bg-keppel text-white" : "border-nordic/20 hover:border-keppel"}`}
+                    className={`rounded-soft border px-4 py-3 text-left transition-colors ${on ? "border-keppel bg-keppel text-nordic" : "border-nordic/20 hover:border-keppel"}`}
                   >
                     <span className="block text-[1.1rem] font-bold tabular-nums">{fmt.time.format(new Date(s.start))}</span>
                     <span className={`block text-[0.8rem] ${on ? "text-white/85" : "text-ink/55"}`}>{fmt.kerala.format(new Date(s.start))} in Kerala</span>
@@ -210,7 +210,7 @@ export function SlotPicker({ token, defaultMode, name }: { token: string; defaul
               type="button"
               onClick={book}
               disabled={state === "booking"}
-              className="mt-5 inline-flex items-center gap-3 rounded-pill bg-keppel px-8 py-3.5 font-bold text-white transition-colors hover:bg-nordic disabled:opacity-70"
+              className="mt-5 inline-flex items-center gap-3 rounded-pill bg-keppel px-8 py-3.5 font-bold text-nordic transition-colors hover:bg-nordic hover:text-cream disabled:opacity-70"
             >
               {state === "booking" && <span aria-hidden className="h-4 w-4 animate-spin rounded-pill border-2 border-white/40 border-t-white" />}
               {state === "booking" ? "Booking" : "Confirm this time"}

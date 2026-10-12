@@ -100,7 +100,7 @@ export function EbookDownload({ slug, title, requiresEmail }: { slug: string; ti
                 {error}
               </p>
             )}
-            <button type="submit" disabled={state === "sending"} className="mt-5 rounded-pill bg-keppel px-7 py-3 font-bold text-white transition-colors hover:bg-nordic disabled:opacity-70">
+            <button type="submit" disabled={state === "sending"} className="mt-5 rounded-pill bg-keppel px-7 py-3 font-bold text-nordic transition-colors hover:bg-nordic hover:text-cream disabled:opacity-70">
               {state === "sending" ? "Preparing" : "Send me the guide"}
             </button>
           </motion.form>

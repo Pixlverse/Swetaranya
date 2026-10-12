@@ -31,7 +31,7 @@ export default async function TalkPage({ searchParams }: PageProps<"/talk-to-the
     <div className="mx-auto grid max-w-[88rem] gap-14 px-5 pb-24 pt-14 sm:px-8 md:pt-20 lg:grid-cols-12">
       <aside className="lg:col-span-5">
         <div className="lg:sticky lg:top-32">
-          <h1 className="text-[clamp(2.8rem,6.4vw,5.2rem)] leading-[0.96] tracking-[-0.02em]">Write to us as you would to a doctor you trust.</h1>
+          <h1 className="text-[clamp(2.2rem,4.18vw,3.4rem)] leading-[0.96] tracking-[-0.02em]">Write to us as you would to a doctor you trust.</h1>
           <div className="mt-10 flex items-start gap-5">
             <Placeholder label={`${PHYSICIAN_NAME}`} shape="drop" className="aspect-[4/5] w-24 shrink-0" />
             <p className="font-heading text-[1.2rem] italic leading-snug text-nordic">

@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: "Privacy", description: "How Swetaran
 export default function PrivacyPage() {
   return (
     <article className="mx-auto max-w-3xl px-5 pb-24 pt-14 sm:px-8 md:pt-20">
-      <h1 className="text-[clamp(2.6rem,6vw,4.6rem)]">Privacy</h1>
+      <h1 className="text-[clamp(2.1rem,4.04vw,3.1rem)]">Privacy</h1>
       <p className="mt-4 border border-dashed border-terracotta p-4 text-[0.92rem] text-ink/75">
         Placeholder policy — to be reviewed by Swetaranya&apos;s legal adviser before launch.
       </p>

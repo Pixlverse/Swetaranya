@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Taviraj } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-// Brand typography (Brand Guidelines v01, p.12): Taviraj for titles and headings, Orkney for body.
-const taviraj = Taviraj({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-taviraj",
+// Headings: Clarity City (SIL OFL, VMware). Not on Google Fonts, so it is self-hosted like Orkney.
+const clarityCity = localFont({
+  src: [
+    { path: "../fonts/clarity-city/ClarityCity-Light.woff2", weight: "300", style: "normal" },
+    { path: "../fonts/clarity-city/ClarityCity-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/clarity-city/ClarityCity-RegularItalic.woff2", weight: "400", style: "italic" },
+    { path: "../fonts/clarity-city/ClarityCity-Medium.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/clarity-city/ClarityCity-SemiBold.woff2", weight: "600", style: "normal" },
+  ],
+  variable: "--font-clarity-city",
   display: "swap",
 });
 
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${taviraj.variable} ${orkney.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${clarityCity.variable} ${orkney.variable}`} suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

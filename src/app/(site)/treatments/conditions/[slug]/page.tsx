@@ -41,7 +41,7 @@ export default async function ConditionPage({ params }: PageProps<"/treatments/c
 
       {/* Answer first */}
       <header className="mx-auto max-w-[88rem] px-5 pb-16 pt-8 sm:px-8 md:pt-12">
-        <h1 className="text-[clamp(2.8rem,7vw,5.8rem)] leading-[0.95] tracking-[-0.02em]">
+        <h1 className="text-[clamp(2.2rem,4.47vw,3.7rem)] leading-[0.95] tracking-[-0.02em]">
           {c.name}
         </h1>
         <div className="mt-10 grid gap-8 md:grid-cols-12">
@@ -55,7 +55,7 @@ export default async function ConditionPage({ params }: PageProps<"/treatments/c
       <div className="border-y border-nordic/10 bg-white/60">
         <div className="mx-auto grid max-w-[88rem] gap-14 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24">
           <section className="md:col-span-7" aria-labelledby="approach">
-            <h2 id="approach" className="text-[clamp(1.8rem,3.2vw,2.6rem)]">How we approach it at Swetaranya</h2>
+            <h2 id="approach" className="text-[clamp(1.7rem,2.58vw,2.1rem)]">How we approach it at Swetaranya</h2>
             <div className="prose-swet mt-6">
               {paragraphs(c.approach).map((p) => (
                 <p key={p}>{p}</p>
@@ -91,7 +91,7 @@ export default async function ConditionPage({ params }: PageProps<"/treatments/c
 
       {c.faqs.length > 0 && (
         <section className="mx-auto grid max-w-[88rem] gap-10 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24" aria-labelledby="faqs">
-          <h2 id="faqs" className="text-[clamp(1.8rem,3.2vw,2.6rem)] md:col-span-4">Questions guests ask</h2>
+          <h2 id="faqs" className="text-[clamp(1.7rem,2.58vw,2.1rem)] md:col-span-4">Questions guests ask</h2>
           <div className="md:col-span-8">
             <FaqAccordion faqs={c.faqs} />
           </div>
@@ -102,7 +102,7 @@ export default async function ConditionPage({ params }: PageProps<"/treatments/c
         <SymbolDivider className="mb-14" />
         <div className="relative isolate grid gap-8 overflow-hidden rounded-soft bg-keppel/10 px-6 py-12 md:grid-cols-12 md:items-center md:px-12">
           <OrnamentPattern opacity={0.065} className="-z-10" />
-          <p className="font-heading text-[clamp(1.6rem,3vw,2.4rem)] leading-tight text-nordic md:col-span-7">
+          <p className="font-heading text-[clamp(1.6rem,2.5vw,2rem)] leading-tight text-nordic md:col-span-7">
             Every person is different. The honest next step is a conversation with the physician.
           </p>
           <div className="md:col-span-4 md:col-start-9">

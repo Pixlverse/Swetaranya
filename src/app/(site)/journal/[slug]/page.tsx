@@ -28,7 +28,7 @@ export default async function JournalPostPage({ params }: PageProps<"/journal/[s
           <span aria-hidden className="h-2 w-2 rotate-45 bg-terracotta" />
           {journalCategoryLabel(post.category)}
         </Link>
-        <h1 className="mt-5 text-[clamp(2.4rem,6vw,4.6rem)] leading-[1.02] tracking-[-0.02em]">{post.title}</h1>
+        <h1 className="mt-5 text-[clamp(2rem,4.04vw,3.1rem)] leading-[1.02] tracking-[-0.02em]">{post.title}</h1>
         {post.excerpt && <p className="mt-6 font-heading text-[1.35rem] italic leading-snug text-nordic/80">{post.excerpt}</p>}
         <p className="mt-8 border-t border-nordic/15 pt-4 text-[0.92rem] text-ink/60">
           {post.author} — <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>

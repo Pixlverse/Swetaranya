@@ -69,13 +69,13 @@ export function ConstitutionCheck() {
     return (
       <div className="grid items-center gap-12 md:grid-cols-12">
         <div className="md:col-span-6">
-          <h1 className="text-[clamp(2.8rem,6.4vw,5.2rem)] leading-[0.98] tracking-[-0.02em]">Know your constitution</h1>
+          <h1 className="text-[clamp(2.2rem,4.18vw,3.4rem)] leading-[0.98] tracking-[-0.02em]">Know your constitution</h1>
           <p className="mt-6 max-w-lg text-[1.1rem] text-ink/80">
             Ayurveda describes three tendencies — Vata, Pitta and Kapha — present in everyone in different measure. Twelve short questions
             about your body, digestion, sleep and temperament show which of them may lead in you.
           </p>
           <Disclaimer className="mt-8 max-w-lg" />
-          <button type="button" onClick={() => setStage("questions")} className="mt-10 rounded-pill bg-keppel px-8 py-3.5 font-bold text-white transition-colors hover:bg-nordic">
+          <button type="button" onClick={() => setStage("questions")} className="mt-10 rounded-pill bg-keppel px-8 py-3.5 font-bold text-nordic transition-colors hover:bg-nordic hover:text-cream">
             Begin
           </button>
         </div>
@@ -106,7 +106,7 @@ export function ConstitutionCheck() {
             className="mt-8"
           >
             <legend className="sr-only">{q.question}</legend>
-            <h2 ref={heading} tabIndex={-1} className="text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.05] focus:outline-none">
+            <h2 ref={heading} tabIndex={-1} className="text-[clamp(1.8rem,3.3vw,2.4rem)] leading-[1.05] focus:outline-none">
               {q.question}
             </h2>
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
@@ -149,7 +149,7 @@ export function ConstitutionCheck() {
           <BalanceTriangle vata={r.vata} pitta={r.pitta} kapha={r.kapha} className="mx-auto w-full max-w-md" />
         </div>
         <motion.div className="md:col-span-5 md:col-start-8" initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: reduce ? 0 : 1.8, duration: 0.6 }}>
-          <h2 ref={heading} tabIndex={-1} className="text-[clamp(2.2rem,4.6vw,3.6rem)] leading-[1.02] focus:outline-none">
+          <h2 ref={heading} tabIndex={-1} className="text-[clamp(1.9rem,3.32vw,2.6rem)] leading-[1.02] focus:outline-none">
             {leading.length > 1 ? `A ${title} tendency` : `${title} may lead in you`}
           </h2>
           <p className="mt-4 text-[1.05rem] text-ink/80">

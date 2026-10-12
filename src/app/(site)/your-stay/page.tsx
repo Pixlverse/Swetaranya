@@ -16,7 +16,7 @@ export default async function YourStayPage() {
     <>
       <section className="mx-auto grid max-w-[88rem] gap-10 px-5 pb-16 pt-14 sm:px-8 md:grid-cols-12 md:pt-20">
         <div className="md:col-span-7">
-          <h1 className="text-[clamp(2.8rem,7.2vw,6.2rem)] leading-[0.95] tracking-[-0.02em]">{c.intro.heading}</h1>
+          <h1 className="text-[clamp(2.2rem,4.53vw,3.9rem)] leading-[0.95] tracking-[-0.02em]">{c.intro.heading}</h1>
           <p className="mt-8 max-w-xl text-[1.1rem] text-ink/80 md:ml-[10%]">{c.intro.body}</p>
         </div>
         <Placeholder label="the front of the ancestral house, with its tiled roof and verandah" shape="arch" className="aspect-[3/4] w-full md:col-span-4 md:col-start-9" />
@@ -25,7 +25,7 @@ export default async function YourStayPage() {
       <section id="rooms" className="mx-auto max-w-[88rem] scroll-mt-32 px-5 py-16 sm:px-8 md:py-24" aria-labelledby="rooms-heading">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
-            <h2 id="rooms-heading" className="text-[clamp(2rem,4vw,3.2rem)]">{c.rooms.heading}</h2>
+            <h2 id="rooms-heading" className="text-[clamp(1.8rem,3vw,2.4rem)]">{c.rooms.heading}</h2>
             <p className="mt-5 text-ink/80">{c.rooms.body}</p>
           </div>
           <div className="grid grid-cols-6 gap-3 md:col-span-8">
@@ -40,7 +40,7 @@ export default async function YourStayPage() {
       <section id="a-day" className="mx-auto max-w-[88rem] scroll-mt-32 px-5 py-16 sm:px-8 md:py-24" aria-labelledby="day-heading">
         <div className="grid gap-10 border-y border-nordic/10 py-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <h2 id="day-heading" className="text-[clamp(2rem,4vw,3.2rem)]">What a day here looks like</h2>
+            <h2 id="day-heading" className="text-[clamp(1.8rem,3vw,2.4rem)]">What a day here looks like</h2>
             <p className="mt-4 text-ink/75">{aDay.intro.body}</p>
             <TextLink href="/a-day-at-swetaranya" className="mt-6 inline-block">
               A day at Swetaranya, hour by hour
@@ -59,7 +59,7 @@ export default async function YourStayPage() {
 
       <section id="included" className="mx-auto max-w-[88rem] scroll-mt-32 px-5 py-16 sm:px-8 md:py-24" aria-labelledby="included-heading">
         <div className="grid gap-10 md:grid-cols-12">
-          <h2 id="included-heading" className="text-[clamp(2rem,4vw,3.2rem)] md:col-span-4">{c.included.heading}</h2>
+          <h2 id="included-heading" className="text-[clamp(1.8rem,3vw,2.4rem)] md:col-span-4">{c.included.heading}</h2>
           <ul className="grid gap-x-10 sm:grid-cols-2 md:col-span-8">
             {c.included.items.map((item) => (
               <li key={item} className="flex gap-4 border-b border-nordic/10 py-4">
@@ -74,8 +74,8 @@ export default async function YourStayPage() {
       </section>
 
       <section id="international" className="on-dark scroll-mt-32 bg-nordic text-cream" aria-labelledby="intl-heading">
-        <div className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-28">
-          <h2 id="intl-heading" className="max-w-3xl text-[clamp(2rem,4vw,3.2rem)] text-cream">{c.international.heading}</h2>
+        <div className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24">
+          <h2 id="intl-heading" className="max-w-3xl text-[clamp(1.8rem,3vw,2.4rem)] text-cream">{c.international.heading}</h2>
           <p className="mt-4 max-w-2xl text-cream/75">Many of our guests travel from the Gulf, Europe and beyond. This is how the journey usually goes.</p>
           <ol className="mt-14 grid gap-10 md:grid-cols-5 md:gap-6">
             {c.international.steps.map((s, i) => (

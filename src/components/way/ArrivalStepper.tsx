@@ -73,7 +73,7 @@ export function ArrivalStepper({ steps }: { steps: readonly Step[] }) {
             >
               <span
                 className={`relative z-10 grid h-9 w-9 shrink-0 place-items-center rounded-pill border text-[0.8rem] font-bold tabular-nums transition-colors duration-300 ${
-                  selected ? "border-keppel bg-keppel text-white" : done ? "border-keppel bg-cream text-keppel" : "border-nordic/25 bg-cream text-ink/60 group-hover:border-keppel"
+                  selected ? "border-keppel bg-keppel text-nordic" : done ? "border-keppel bg-cream text-keppel" : "border-nordic/25 bg-cream text-ink/60 group-hover:border-keppel"
                 }`}
               >
                 {pad(i)}
@@ -95,10 +95,10 @@ export function ArrivalStepper({ steps }: { steps: readonly Step[] }) {
             transition={{ duration: reduce ? 0.1 : 0.45, ease: [0.22, 0.61, 0.36, 1] }}
             className="border-t border-nordic/15 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-2"
           >
-            <p className="font-heading text-[clamp(5rem,12vw,9rem)] leading-[0.8] text-keppel/35 tabular-nums" aria-hidden>
+            <p className="font-heading text-[clamp(3.3rem,7.07vw,5.3rem)] leading-[0.8] text-keppel/35 tabular-nums" aria-hidden>
               {pad(active)}
             </p>
-            <h3 className="mt-4 text-[clamp(1.9rem,3.4vw,2.8rem)]">{steps[active].title}</h3>
+            <h3 className="mt-4 text-[clamp(1.75rem,2.67vw,2.2rem)]">{steps[active].title}</h3>
             <p className="mt-4 max-w-lg text-[1.1rem] text-ink/80">{steps[active].body}</p>
             <div className="mt-10 flex gap-6 text-[0.95rem] font-bold">
               <button type="button" onClick={() => go(active - 1)} disabled={active === 0} className="text-nordic underline decoration-keppel underline-offset-4 disabled:opacity-30 disabled:no-underline">

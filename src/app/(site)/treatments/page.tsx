@@ -20,14 +20,14 @@ export default async function TreatmentsPage() {
   return (
     <>
       <section className="mx-auto max-w-[88rem] px-5 pb-10 pt-14 sm:px-8 md:pt-20">
-        <h1 className="max-w-5xl text-[clamp(2.8rem,7vw,6rem)] leading-[0.98] tracking-[-0.02em]">
+        <h1 className="max-w-5xl text-[clamp(2.2rem,4.43vw,3.8rem)] leading-[0.98] tracking-[-0.02em]">
           {c.intro.heading}
         </h1>
         <p className="mt-8 max-w-2xl text-[1.1rem] text-ink/80 md:ml-[8%]">{c.intro.body}</p>
       </section>
 
       <section id="journey" aria-labelledby="journey-heading" className="mx-auto max-w-[88rem] scroll-mt-32 px-5 py-16 sm:px-8 md:py-24">
-        <h2 id="journey-heading" className="text-[clamp(2rem,4vw,3.2rem)]">{c.journey.heading}</h2>
+        <h2 id="journey-heading" className="text-[clamp(1.8rem,3vw,2.4rem)]">{c.journey.heading}</h2>
         <ol className="mt-12 grid gap-0 md:auto-cols-fr md:grid-flow-col">
           {c.journey.stages.map((j, i, all) => (
             <li key={j.title} className="relative border-t-2 border-nordic/15 pt-6 md:pr-8">
@@ -42,9 +42,9 @@ export default async function TreatmentsPage() {
       </section>
 
       <section id="conditions" aria-labelledby="conditions-heading" className="on-dark scroll-mt-32 bg-nordic text-cream">
-        <div className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-28">
+        <div className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24">
           <div className="grid gap-6 md:grid-cols-12">
-            <h2 id="conditions-heading" className="text-[clamp(2rem,4vw,3.2rem)] text-cream md:col-span-6">
+            <h2 id="conditions-heading" className="text-[clamp(1.8rem,3vw,2.4rem)] text-cream md:col-span-6">
               {c.conditions.heading}
             </h2>
             <p className="self-end text-cream/75 md:col-span-5 md:col-start-8">{c.conditions.body}</p>
@@ -53,7 +53,7 @@ export default async function TreatmentsPage() {
             {conditions.map((c) => (
               <li key={c._id} className="border-b border-cream/15">
                 <Link href={`/treatments/conditions/${c.slug}`} className="group grid gap-3 py-8 md:grid-cols-12 md:gap-8">
-                  <span className="font-heading text-[clamp(1.9rem,3.6vw,3rem)] leading-tight text-cream transition-colors group-hover:text-keppel md:col-span-5">
+                  <span className="font-heading text-[clamp(1.75rem,2.76vw,2.3rem)] leading-tight text-cream transition-colors group-hover:text-keppel md:col-span-5">
                     {c.name}
                   </span>
                   <span className="line-clamp-3 text-cream/70 md:col-span-6 md:col-start-7">{c.summary}</span>
@@ -64,8 +64,8 @@ export default async function TreatmentsPage() {
         </div>
       </section>
 
-      <section id="therapies" aria-labelledby="therapies-heading" className="mx-auto max-w-[88rem] scroll-mt-32 px-5 py-20 sm:px-8 md:py-28">
-        <h2 id="therapies-heading" className="text-[clamp(2rem,4vw,3.2rem)]">{c.therapies.heading}</h2>
+      <section id="therapies" aria-labelledby="therapies-heading" className="mx-auto max-w-[88rem] scroll-mt-32 px-5 py-20 sm:px-8 md:py-24">
+        <h2 id="therapies-heading" className="text-[clamp(1.8rem,3vw,2.4rem)]">{c.therapies.heading}</h2>
         <div className="mt-12 grid gap-16 lg:grid-cols-2 lg:gap-20">
           <div>
             <h3 className="text-[1.7rem]">Panchakarma</h3>

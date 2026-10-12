@@ -67,7 +67,7 @@ export function StandaloneUploader({ token, retentionDays }: { token: string; re
           <div className="mt-2 h-1 bg-nordic/10"><div className="h-1 bg-keppel transition-[width]" style={{ width: `${progress}%` }} /></div>
         </div>
       )}
-      <button type="submit" disabled={progress !== null} className="rounded-pill bg-keppel px-8 py-3.5 font-bold text-white transition-colors hover:bg-nordic disabled:opacity-70">
+      <button type="submit" disabled={progress !== null} className="rounded-pill bg-keppel px-8 py-3.5 font-bold text-nordic transition-colors hover:bg-nordic hover:text-cream disabled:opacity-70">
         Upload privately
       </button>
     </form>

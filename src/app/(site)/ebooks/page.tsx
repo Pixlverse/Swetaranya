@@ -16,7 +16,7 @@ export default async function EbooksPage() {
   return (
     <div className="mx-auto max-w-[88rem] px-5 pb-24 pt-10 sm:px-8 md:pt-16">
       <header className="grid gap-8 md:grid-cols-12">
-        <h1 className="text-[clamp(2.8rem,7vw,6rem)] leading-[0.95] tracking-[-0.02em] md:col-span-7">Guides to take home</h1>
+        <h1 className="text-[clamp(2.2rem,4.43vw,3.8rem)] leading-[0.95] tracking-[-0.02em] md:col-span-7">Guides to take home</h1>
         <p className="self-end text-[1.05rem] text-ink/75 md:col-span-4 md:col-start-9">
           Short, practical guides written in the house — the things guests most often ask us to write down before they leave.
         </p>
@@ -32,7 +32,7 @@ export default async function EbooksPage() {
                 <BookCover title={b.title} subtitle={b.subtitle} cover={b.cover} className="mx-auto w-full max-w-[17rem]" />
               </div>
               <div className={`md:col-span-7 ${i % 2 ? "md:order-1" : "md:col-start-6"}`}>
-                <h2 className="text-[clamp(2rem,4vw,3rem)]">{b.title}</h2>
+                <h2 className="text-[clamp(1.8rem,3.07vw,2.3rem)]">{b.title}</h2>
                 {b.subtitle && <p className="mt-2 font-heading text-[1.25rem] italic text-keppel">{b.subtitle}</p>}
                 {b.description && <p className="mt-5 max-w-xl text-[1.05rem] text-ink/80">{b.description}</p>}
                 {b.contents.length > 0 && (

@@ -61,13 +61,13 @@ export function LifestyleCheck() {
     return (
       <div className="grid items-center gap-12 md:grid-cols-12">
         <div className="md:col-span-6">
-          <h1 className="text-[clamp(2.8rem,6.4vw,5.4rem)] leading-[0.96] tracking-[-0.02em]">How is your daily life treating you?</h1>
+          <h1 className="text-[clamp(2.2rem,4.15vw,3.5rem)] leading-[0.96] tracking-[-0.02em]">How is your daily life treating you?</h1>
           <p className="mt-6 max-w-lg text-[1.1rem] text-ink/80">
             Eight short questions about the everyday things Ayurveda pays attention to. It takes about two minutes. At the end you&apos;ll see a
             snapshot of where your days feel steady, and where they may need more care.
           </p>
           <Disclaimer className="mt-8 max-w-lg" />
-          <button type="button" onClick={() => setStage("questions")} className="mt-10 rounded-pill bg-keppel px-8 py-3.5 font-bold text-white transition-colors hover:bg-nordic">
+          <button type="button" onClick={() => setStage("questions")} className="mt-10 rounded-pill bg-keppel px-8 py-3.5 font-bold text-nordic transition-colors hover:bg-nordic hover:text-cream">
             Begin
           </button>
         </div>
@@ -94,7 +94,7 @@ export function LifestyleCheck() {
               className="mt-4"
             >
               <legend className="sr-only">{q.question}</legend>
-              <h2 ref={heading} tabIndex={-1} className="text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] focus:outline-none">
+              <h2 ref={heading} tabIndex={-1} className="text-[clamp(1.8rem,3.24vw,2.5rem)] leading-[1.05] focus:outline-none">
                 {q.question}
               </h2>
               <div className="mt-10 border-t border-nordic/15">
@@ -150,7 +150,7 @@ export function LifestyleCheck() {
           animate={{ opacity: 1 }}
           transition={{ delay: reduce ? 0 : 1.6, duration: 0.6 }}
         >
-          <h2 ref={heading} tabIndex={-1} className="text-[clamp(2.2rem,4.6vw,3.6rem)] leading-[1.02] focus:outline-none">
+          <h2 ref={heading} tabIndex={-1} className="text-[clamp(1.9rem,3.32vw,2.6rem)] leading-[1.02] focus:outline-none">
             Your lifestyle snapshot
           </h2>
           <p className="mt-4 text-[1.05rem] text-ink/80">

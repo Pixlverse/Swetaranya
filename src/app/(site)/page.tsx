@@ -1,194 +1,328 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { HomeHero } from "@/components/home/HomeHero";
+import { ThreadOfCare } from "@/components/home/ThreadOfCare";
+import { HomeHospitalColumns } from "@/components/home/HomeHospitalColumns";
+import { DayInMoments } from "@/components/home/DayInMoments";
+import { PillarRhythm } from "@/components/home/PillarRhythm";
+import { CareGrid } from "@/components/home/CareGrid";
+import { DayClock } from "@/components/home/DayClock";
+import { LifestyleWheel } from "@/components/home/LifestyleWheel";
 import { Placeholder } from "@/components/brand/Placeholder";
-import { AirLines } from "@/components/brand/AirLines";
 import { SymbolDivider } from "@/components/brand/SymbolDivider";
 import { OutlineLink, PrimaryLink, TextLink } from "@/components/site/Buttons";
-import { PetalChart } from "@/components/lifestyle/PetalChart";
 import { TestimonialQuotes } from "@/components/site/TestimonialQuotes";
-import { JournalRows } from "@/components/journal/JournalRows";
-import { getJournalPosts, getPageContent, getTestimonials } from "@/lib/queries";
+import { getPageContent, getTestimonials } from "@/lib/queries";
 import { LIFESTYLE_CHECK_DISCLAIMER, PHYSICIAN_NAME } from "@/lib/constants";
-import { VIDEO_CHAPTERS } from "@/content/video";
+import { whatsappLink } from "@/lib/whatsapp";
 import { OrnamentPattern } from "@/components/brand/OrnamentPattern";
+import { RipplePattern } from "@/components/brand/RipplePattern";
+import { LotusMandala } from "@/components/brand/LotusMandala";
 
 export const dynamic = "force-dynamic";
 
-const DAY_SNIPPET = ["05:30", "09:00", "12:30", "13:30", "18:45"];
+export const metadata: Metadata = {
+  title: { absolute: "Swetaranya — An Ayurvedic home hospital in Tirur, Kerala" },
+  description:
+    "The care of an Ayurvedic hospital in the warmth of a 170-year-old family home. Only a few guests stay at a time, so your physician knows you, sees you every day and shapes your treatment around you.",
+};
+
+const paragraphs = (text: string) => text.split(/\n\n+/);
 
 export default async function HomePage() {
-  const [c, testimonials, posts, aDay] = await Promise.all([getPageContent("home"), getTestimonials(3), getJournalPosts({ limit: 3 }), getPageContent("a-day")]);
-  const moments = aDay.moments.items;
-  // Prefer the five signature moments; if the timeline was edited and they're gone, spread five across the day.
-  const picked = moments.filter((d) => DAY_SNIPPET.includes(d.time));
-  const day = picked.length >= 3 ? picked : moments.filter((_, i) => i % Math.max(1, Math.floor(moments.length / 5)) === 0).slice(0, 5);
+  const [c, testimonials] = await Promise.all([getPageContent("home"), getTestimonials(3).catch(() => [])]);
 
   return (
     <>
       <HomeHero {...c.hero} />
 
-      {/* Live · Heal · Learn — one sentence, stepping down the page */}
+      {/* The promise in one breath: hospital care, family home. */}
+      <section className="relative isolate overflow-hidden bg-cream" aria-labelledby="intro-heading">
+        {/* Ripples on still water: a faint field of circles behind the words. */}
+        <RipplePattern className="-z-10" scale={1.1} />
+        <div className="mx-auto grid max-w-[88rem] gap-8 px-5 py-20 sm:px-8 md:py-24 lg:grid-cols-12 lg:gap-10">
+          <h2 id="intro-heading" className="text-[clamp(1.9rem,3.3vw,2.8rem)] leading-[1.1] lg:col-span-6">
+            {c.intro.heading}
+          </h2>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <p className="text-[1.05rem] leading-relaxed text-ink/80">{c.intro.body}</p>
+            <p className="mt-6 border-l-2 border-keppel pl-5 font-heading text-[clamp(1.2rem,1.7vw,1.4rem)] leading-snug text-nordic">{c.intro.aside}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* The thread of care — one copper line that becomes each fact as it draws down the page. */}
+      <section aria-label={c.thread.heading}>
+        <ThreadOfCare heading={c.thread.heading} stops={c.thread.stops.map((s) => ({ label: s.label, text: c.facts.items[s.fact] ?? "" }))} />
+      </section>
+
+      {/* What is a home hospital — answered first, then what it is and is not. */}
+      <section className="mx-auto max-w-[88rem] px-5 pb-20 sm:px-8 md:pb-24" aria-labelledby="hh-heading">
+        {/* The question across the full width, then the answer beneath it, led in by a thread that ends in the brandmark's drop. */}
+        <div className="border-t border-nordic/15 pt-14 md:pt-20">
+          <p className="text-[0.95rem] font-bold text-keppel">{c.homeHospital.label}</p>
+          <h2 id="hh-heading" className="mt-3 text-balance text-[clamp(2rem,4.4vw,4rem)] leading-[1.05] tracking-[-0.025em]">
+            {c.homeHospital.heading}
+          </h2>
+          <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-12 md:gap-8">
+            <div aria-hidden className="hidden items-center gap-1.5 self-start md:col-span-3 md:mt-[0.95rem] md:flex">
+              <span className="h-[1.5px] flex-1 rounded-pill bg-keppel" />
+              <svg viewBox="0 0 12 10" className="h-2.5 w-3 shrink-0 fill-keppel">
+                <path d="M0 5c3.4-2.6 6-4.2 8.3-4.2a4.2 4.2 0 0 1 0 8.4C6 9.2 3.4 7.6 0 5Z" />
+              </svg>
+            </div>
+            <p className="text-pretty font-heading text-[clamp(1.2rem,1.9vw,1.65rem)] leading-[1.5] text-nordic/90 md:col-span-9">{c.homeHospital.answer}</p>
+          </div>
+        </div>
+        <div className="mt-12 md:mt-16">
+          <HomeHospitalColumns
+            statements={[c.homeHospital.statements[0], c.homeHospital.statements[1]]}
+            notResort={c.homeHospital.statements[2]}
+          />
+        </div>
+      </section>
+
+      {/* Ayurveda as part of the day — one long, unhurried run of sentences. */}
+      {/* overflow-x-clip, not hidden, so the pinned row can stick while it scrolls. */}
+      <section className="overflow-x-clip bg-keppel/12" aria-labelledby="pod-heading">
+        {/* The day, one photograph at a time. */}
+        <DayInMoments label={c.partOfDay.label} heading={c.partOfDay.heading} moments={c.partOfDay.moments} />
+
+        {/* Then the words, given room. */}
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-5 pb-20 pt-10 sm:px-8 md:grid-cols-12 md:pb-24 md:pt-12">
+          <p className="self-start border-l-2 border-keppel pl-6 font-heading text-[clamp(1.5rem,2.4vw,2.1rem)] leading-[1.25] text-nordic md:col-span-6">
+            {c.partOfDay.care}
+          </p>
+          <div className="md:col-span-5 md:col-start-8 md:pt-2">
+            <p className="text-[1.1rem] leading-relaxed text-ink/80">{c.partOfDay.body}</p>
+            <p className="mt-6 font-heading text-[clamp(1.5rem,2vw,1.8rem)] text-keppel">{c.partOfDay.closer}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Live · Heal · Learn — three times of one day, a sun path running behind them. */}
       <section className="on-dark relative overflow-hidden bg-nordic text-cream" aria-labelledby="pillars-heading">
-        <AirLines className="absolute -right-[12%] top-0 h-full w-[70%] opacity-[0.07]" tone="cream" />
-        <div className="relative mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-28">
-          <h2 id="pillars-heading" className="max-w-md font-body text-[1.05rem] font-normal leading-relaxed text-cream/75">
+        <div className="relative mx-auto max-w-[88rem] px-5 py-16 sm:px-8 md:py-20">
+          <h2 id="pillars-heading" className="sr-only">
             {c.pillars.heading}
           </h2>
-          <div className="mt-10 space-y-12 md:mt-6 md:space-y-4">
-            {(
-              [
-                ["Live", c.pillars.live, "md:ml-0", "/the-swetaranya-way#live"],
-                ["Heal", c.pillars.heal, "md:ml-[14%]", "/treatments"],
-                ["Learn", c.pillars.learn, "md:ml-[28%]", "/the-swetaranya-way#take-ayurveda-home"],
-              ] as const
-            ).map(([word, text, indent, href]) => (
-              <div key={word} className={`grid items-end gap-4 md:grid-cols-[auto_minmax(0,22rem)] md:gap-10 ${indent}`}>
-                <p className="font-heading text-[clamp(4.5rem,14vw,11rem)] leading-[0.85] tracking-[-0.03em] text-cream" aria-hidden>
-                  {word}.
-                </p>
-                <div className="border-l border-keppel pl-5 md:mb-5">
-                  <h3 className="sr-only">{word}</h3>
-                  <p className="text-cream/85">{text}</p>
-                  <Link href={href} className="mt-3 inline-block text-[0.92rem] font-bold text-keppel underline-offset-4 hover:underline">
-                    More about how we {word.toLowerCase()}
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* A Day at Swetaranya — a real sequence, so times are shown */}
-      <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-28" aria-labelledby="day-heading">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <h2 id="day-heading" className="max-w-2xl text-[clamp(2.2rem,4.6vw,3.6rem)]">
-            Days here have a shape, and it isn&apos;t a spa menu.
-          </h2>
-          <TextLink href="/a-day-at-swetaranya">Walk through a whole day</TextLink>
-        </div>
-        <ol className="relative mt-14 grid gap-10 md:grid-cols-5 md:gap-6">
-          <span aria-hidden className="absolute left-[7px] top-2 h-[calc(100%-1rem)] w-px bg-nordic/20 md:left-0 md:top-[7px] md:h-px md:w-full" />
-          {day.map((d) => (
-            <li key={d.time} className="relative pl-8 md:pl-0 md:pt-10">
-              <span aria-hidden className="absolute left-0 top-1.5 h-[15px] w-[15px] rounded-pill border-2 border-keppel bg-cream md:top-0" />
-              <p className="font-heading text-[1.9rem] leading-none text-keppel">{d.time}</p>
-              <h3 className="mt-3 font-body text-[1rem] font-bold text-nordic">{d.title}</h3>
-              <p className="mt-1.5 text-[0.95rem] text-ink/75">{d.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* Lifestyle Check teaser */}
-      <section className="bg-keppel/20" aria-labelledby="lc-heading">
-        <div className="mx-auto grid max-w-[88rem] items-center gap-12 px-5 py-20 sm:px-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:py-24">
-          <PetalChart className="mx-auto w-full max-w-[22rem] text-nordic" />
-          <div>
-            <h2 id="lc-heading" className="text-[clamp(2.1rem,4.2vw,3.3rem)]">How is your daily life treating you?</h2>
-            <p className="mt-5 max-w-lg text-[1.07rem] text-ink/80">
-              Eight honest questions about sleep, food, digestion, movement, stress, routine, rest and energy. At the end you see a snapshot
-              of where your days feel steady, and where they may need care.
+          <PillarRhythm
+            pillars={[
+              { word: "Live", text: c.pillars.live },
+              { word: "Heal", text: c.pillars.heal },
+              { word: "Learn", text: c.pillars.learn },
+            ]}
+          />
+          <div className="mt-14 flex flex-col items-center gap-7 border-t border-cream/15 pt-10 text-center md:mt-16">
+            <p className="max-w-4xl text-balance font-heading text-[clamp(1.5rem,2.6vw,2.2rem)] leading-snug text-cream">
+              {/* The two sentences as consecutive lines, without the blank line between them. */}
+              {paragraphs(c.pillars.closer).map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </p>
-            <p className="mt-5 max-w-lg border-l-2 border-terracotta pl-4 text-[0.88rem] text-ink/65">{LIFESTYLE_CHECK_DISCLAIMER}</p>
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <OutlineLink href="/lifestyle-check">Take the Lifestyle Check</OutlineLink>
-              <TextLink href="/constitution-check">Or discover your constitution</TextLink>
-            </div>
+            <OutlineLink href="/the-swetaranya-way" tone="light">
+              Discover Swetaranya
+            </OutlineLink>
           </div>
         </div>
       </section>
 
-      {/* Meet the physician */}
-      <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-32" aria-labelledby="physician-heading">
-        <div className="grid items-center gap-12 md:grid-cols-12">
-          <Placeholder label={`${PHYSICIAN_NAME} in the consulting room at Swetaranya`} shape="drop" className="mx-auto aspect-[4/5] w-3/4 max-w-sm md:col-span-4 md:w-full" />
+      {/* Why a home hospital — the question asked plainly, answered in three steps, then the difference set apart. */}
+      <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24" aria-labelledby="why-heading">
+        <p className="text-[0.95rem] font-bold text-keppel">{c.whyHome.label}</p>
+        <div className="mt-3 flex flex-wrap items-end gap-x-10 gap-y-3">
+          <h2 id="why-heading" className="max-w-[20ch] text-[clamp(2.1rem,4.2vw,3.7rem)] leading-[1.05] tracking-[-0.025em]">
+            {c.whyHome.heading}
+          </h2>
+          {/* The reply, said kindly beside the question. */}
+          <p className="flex items-center gap-3 pb-[0.35em] font-heading text-[clamp(1.3rem,1.9vw,1.65rem)] text-keppel">
+            <span aria-hidden className="h-px w-10 bg-keppel" />
+            {c.whyHome.intro}
+          </p>
+        </div>
+
+        {/* The answer, read across in three steps. */}
+        <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-3 md:gap-0">
+          {paragraphs(c.whyHome.body).map((p, i) => (
+            <p
+              key={i}
+              className={`border-t-2 border-keppel/70 pt-5 text-[1.06rem] leading-relaxed text-ink/80 md:pt-6 ${i ? "md:ml-0 md:border-l md:border-l-nordic/10 md:pl-8" : ""} ${i < 2 ? "md:pr-8" : ""}`}
+            >
+              {p}
+            </p>
+          ))}
+        </div>
+
+        {/* The difference, set apart: what it isn't, then what it is. */}
+        <div className="relative mt-12 overflow-hidden rounded-tl-[3.5rem] rounded-br-[3.5rem] rounded-tr-[1.25rem] rounded-bl-[1.25rem] bg-nordic px-6 py-10 text-cream sm:px-10 md:mt-16 md:px-14 md:py-14">
+          <LotusMandala className="pointer-events-none absolute -bottom-40 -right-24 h-[30rem] w-[30rem] text-cream opacity-[0.09] md:-bottom-48 md:-right-16 md:h-[36rem] md:w-[36rem]" />
+          <p className="relative max-w-5xl text-balance font-heading text-[clamp(1.45rem,2.6vw,2.3rem)] leading-[1.3]">
+            {c.whyHome.difference.split(/(?<=\.)\s+/).map((sentence, i) => (
+              <span key={i} className={i === 0 ? "text-cream/55" : "text-cream"}>
+                {sentence}{" "}
+              </span>
+            ))}
+          </p>
+        </div>
+
+        {/* Fewer guests, more time: what changes, cell by cell. */}
+        <div className="mt-16 md:mt-20">
+          <CareGrid heading={c.whyHome.tableHeading} rows={c.whyHome.rows} largeLabel="In a large Ayurvedic hospital" />
+        </div>
+
+        <div className="mt-16 grid gap-12 md:grid-cols-12">
+          <p className="text-[1.1rem] leading-relaxed text-ink/85 md:col-span-5">{c.whyHome.footnote}</p>
+          <figure className="md:col-span-6 md:col-start-7">
+            <blockquote className="font-heading text-[clamp(1.65rem,2.46vw,2.05rem)] leading-tight text-nordic">&ldquo;{c.whyHome.quote}&rdquo;</blockquote>
+            <figcaption className="mt-4 text-[0.95rem] text-ink/70">— {c.whyHome.quoteBy}</figcaption>
+            <TextLink href="/the-swetaranya-way" className="mt-8 inline-block">
+              Discover the Swetaranya Way
+            </TextLink>
+          </figure>
+        </div>
+      </section>
+
+      {/* Meet the physician — a host who lives in the house, not a visiting doctor. */}
+      <section className="bg-keppel/12" aria-labelledby="physician-heading">
+        <div className="mx-auto grid max-w-[88rem] items-start gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-24">
+          <div className="md:sticky md:top-32 md:col-span-4">
+            <Placeholder label={`${PHYSICIAN_NAME} on the verandah of Veluthat Mana`} shape="drop" className="mx-auto aspect-[4/5] w-3/4 max-w-sm md:w-full" />
+          </div>
           <div className="md:col-span-7 md:col-start-6">
-            <h2 id="physician-heading" className="text-[clamp(2.1rem,4.2vw,3.3rem)]">{c.physician.heading}</h2>
-            <p className="mt-5 max-w-xl text-[1.07rem] text-ink/80">{c.physician.body}</p>
-            <figure className="mt-10 border-t border-terracotta/60 pt-8">
-              <blockquote className="font-heading text-[clamp(1.5rem,2.6vw,2.1rem)] leading-snug text-nordic">
-                &ldquo;{c.physician.quote}&rdquo;
-              </blockquote>
-              <figcaption className="mt-4 text-[0.95rem] text-ink/70">{PHYSICIAN_NAME}, Chief Physician</figcaption>
-            </figure>
-            <TextLink href="/about" className="mt-8 inline-block">
-              The physician, the family and the house
-            </TextLink>
+            <p className="text-[0.95rem] font-bold text-keppel">{c.physician.label}</p>
+            <h2 id="physician-heading" className="mt-3 text-[clamp(1.9rem,3.18vw,2.6rem)]">
+              {c.physician.heading}
+            </h2>
+            <p className="mt-5 font-heading text-[1.45rem] text-keppel">{c.physician.lead}</p>
+            <div className="mt-8 max-w-xl space-y-5 text-[1.05rem] leading-relaxed text-ink/80">
+              {paragraphs(c.physician.body).map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <p className="mt-12 border-t border-terracotta/50 pt-8 font-heading text-[clamp(1.75rem,2.67vw,2.2rem)] leading-tight text-nordic">{c.physician.motto}</p>
+            <OutlineLink href="/about" className="mt-8">
+              Meet the Physician
+            </OutlineLink>
           </div>
         </div>
       </section>
 
-      {/* Stay teaser */}
-      <section className="relative" aria-labelledby="stay-heading">
-        <Placeholder label="the ancestral house seen from the kitchen garden, paddy fields beyond" captionAt="top" className="h-[clamp(22rem,62vh,40rem)] w-full border-x-0" />
-        <div className="mx-auto -mt-28 max-w-[88rem] px-5 sm:px-8">
-          <div className="relative max-w-xl bg-cream p-8 md:p-12">
-            <h2 id="stay-heading" className="text-[clamp(2rem,3.8vw,3rem)]">{c.stay.heading}</h2>
-            <p className="mt-4 text-ink/80">{c.stay.body}</p>
-            <TextLink href="/your-stay" className="mt-6 inline-block">
-              The house, the rooms and what&apos;s included
-            </TextLink>
+      {/* A day here — a genuine sequence, told on a clock face from seven to seven. */}
+      <section className="overflow-x-clip py-20 md:py-24" aria-labelledby="day-heading">
+        <div className="mx-auto grid max-w-[88rem] gap-5 px-5 sm:px-8 md:grid-cols-12 md:items-end md:gap-12">
+          <h2 id="day-heading" className="text-[clamp(1.85rem,3.4vw,3rem)] leading-[1.06] md:col-span-7">
+            {c.day.heading}
+          </h2>
+          <p className="max-w-md text-[1.05rem] text-ink/80 md:col-span-5 md:pb-2">{c.day.body}</p>
+        </div>
+        <DayClock items={c.day.items} />
+        <div className="mx-auto mt-10 flex max-w-[88rem] flex-col gap-6 px-5 sm:px-8 md:flex-row md:items-center md:justify-between">
+          <p className="max-w-md font-heading text-[1.4rem] leading-snug text-nordic">{c.day.closer}</p>
+          <TextLink href="/a-day-at-swetaranya">Experience a Day at Swetaranya</TextLink>
+        </div>
+      </section>
+
+      {/* Lifestyle Check teaser: the eight areas as one flower, named at each petal's tip. */}
+      <section className="on-dark overflow-hidden bg-nordic text-cream" aria-labelledby="lc-heading">
+        <div className="mx-auto grid max-w-[88rem] gap-8 px-5 py-16 sm:px-8 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-x-6 lg:gap-y-0">
+          <div className="lg:self-end">
+            <p className="text-[0.95rem] font-bold text-keppel">{c.lifestyle.label}</p>
+            <h2 id="lc-heading" className="mt-3 max-w-[16ch] text-[clamp(2.1rem,3.9vw,3.5rem)] leading-[1.04] tracking-[-0.025em] text-cream">
+              {c.lifestyle.heading}
+            </h2>
+            <p className="mt-6 max-w-md text-[1.1rem] leading-relaxed text-cream/80">{c.lifestyle.body}</p>
+          </div>
+          {/* Straight after "…shape how you feel:" on phones; beside the words on wide screens. */}
+          <LifestyleWheel
+            areas={c.lifestyle.areas}
+            className="mx-auto w-full max-w-[24rem] px-10 sm:max-w-[32rem] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-[38rem] lg:self-center lg:px-16"
+          />
+          <div className="lg:self-start lg:pt-8">
+            <OutlineLink href="/lifestyle-check" tone="light">
+              Take the Lifestyle Check
+            </OutlineLink>
+            <p className="mt-8 max-w-md border-l-2 border-blush pl-4 text-[0.88rem] text-cream/65">{LIFESTYLE_CHECK_DISCLAIMER}</p>
           </div>
         </div>
       </section>
 
-      {/* Video teaser */}
-      <section className="on-dark relative isolate mt-24 bg-nordic text-cream md:mt-32" aria-labelledby="video-heading">
-        <OrnamentPattern tone="cream" opacity={0.045} className="-z-10" />
-        <div className="mx-auto grid max-w-[88rem] gap-12 px-5 py-20 sm:px-8 md:py-28 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <h2 id="video-heading" className="text-[clamp(2rem,3.8vw,3rem)] text-cream">{c.video.heading}</h2>
-            <p className="mt-4 text-cream/80">{c.video.body}</p>
-            <ol className="mt-8 space-y-2 border-t border-cream/15 pt-6 text-[0.95rem]">
-              {VIDEO_CHAPTERS.map((ch) => (
-                <li key={ch.id} className="flex gap-4 text-cream/80">
-                  <span className="w-12 shrink-0 tabular-nums text-keppel">{ch.at}</span>
-                  {ch.title}
+      {/* The home — kept small on purpose. */}
+      <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24" aria-labelledby="home-heading">
+        <div className="grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <p className="text-[0.95rem] font-bold text-keppel">{c.theHome.label}</p>
+            <h2 id="home-heading" className="mt-3 text-[clamp(1.9rem,3.18vw,2.6rem)]">
+              {c.theHome.heading}
+            </h2>
+            <p className="mt-6 font-heading text-[1.5rem] text-keppel">{c.theHome.lead}</p>
+            <p className="mt-6 max-w-lg text-[1.05rem] leading-relaxed text-ink/80">{c.theHome.body}</p>
+            <p className="mt-6 font-heading text-[clamp(1.8rem,2.83vw,2.2rem)] text-nordic">{c.theHome.didnt}</p>
+            <ul className="mt-6 space-y-1 border-l border-keppel pl-6">
+              {c.theHome.stayed.map((line) => (
+                <li key={line} className="font-heading text-[clamp(1.35rem,2.2vw,1.75rem)] leading-snug text-nordic">
+                  {line}
                 </li>
               ))}
-            </ol>
+            </ul>
+            <div className="mt-8 max-w-lg space-y-4 text-[1.05rem] leading-relaxed text-ink/80">
+              <p>{c.theHome.why}</p>
+              <p>{c.theHome.rebuilding}</p>
+            </div>
           </div>
-          <Link href="/experience" className="group relative block lg:col-span-8" aria-label="Watch the film on the Experience Swetaranya page">
-            <Placeholder label="short film — mornings, meals and treatments at Swetaranya" tone="dark" className="aspect-video w-full" />
-            <span className="absolute left-1/2 top-1/2 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-pill border border-cream/70 bg-nordic/60 transition-transform duration-500 ease-calm group-hover:scale-110">
-              <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 fill-cream" aria-hidden>
-                <path d="M7 4.5v15l12-7.5z" />
-              </svg>
-            </span>
-          </Link>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <Placeholder label="Veluthat Mana from the courtyard — the old house, its trees and the quiet around it" shape="arch" className="aspect-[3/4] w-full" />
+          </div>
+        </div>
+        <div className="mt-16 flex flex-col gap-6 border-t border-nordic/15 pt-10 md:flex-row md:items-center md:justify-between">
+          <p className="max-w-2xl font-heading text-[clamp(1.5rem,2.6vw,2.1rem)] leading-snug text-nordic">{c.theHome.closer}</p>
+          <TextLink href="/your-stay">Explore the Home</TextLink>
         </div>
       </section>
 
       {/* Patient experiences */}
-      <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-28" aria-labelledby="exp-heading">
-        <h2 id="exp-heading" className="max-w-2xl text-[clamp(2.1rem,4.2vw,3.3rem)]">In our guests&apos; words</h2>
+      <section className="mx-auto max-w-[88rem] px-5 pb-20 sm:px-8 md:pb-24" aria-labelledby="exp-heading">
+        <SymbolDivider className="mb-16" />
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <h2 id="exp-heading" className="text-[clamp(1.85rem,3.12vw,2.45rem)]">
+            In our guests&apos; words
+          </h2>
+          <TextLink href="/experience">Read patient stories</TextLink>
+        </div>
         <TestimonialQuotes items={testimonials} />
       </section>
 
-      {/* Journal */}
-      <section className="mx-auto max-w-[88rem] px-5 pb-20 sm:px-8 md:pb-28" aria-labelledby="journal-heading">
-        <SymbolDivider className="mb-16" />
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <h2 id="journal-heading" className="text-[clamp(2.1rem,4.2vw,3.3rem)]">From the Journal</h2>
-          <TextLink href="/journal">All writing</TextLink>
-        </div>
-        <JournalRows posts={posts} className="mt-10" />
-      </section>
-
-      {/* Final CTA */}
+      {/* Final invitation */}
       <section className="relative overflow-hidden border-t border-keppel/30 bg-cream" aria-labelledby="final-cta">
         <span aria-hidden className="absolute inset-0 bg-keppel/12" />
         <OrnamentPattern tone="nordic" opacity={0.07} />
-        <div className="relative mx-auto max-w-[88rem] px-5 py-24 sm:px-8 md:py-32">
-          <h2 id="final-cta" className="max-w-4xl text-[clamp(2.6rem,6.4vw,5.4rem)] leading-[1]">
+        <div className="relative mx-auto max-w-[88rem] px-5 py-24 sm:px-8 md:py-24">
+          <h2 id="final-cta" className="max-w-5xl text-[clamp(2.1rem,4.15vw,3.5rem)] leading-[1]">
             {c.finalCta.heading}
           </h2>
-          <div className="mt-8 flex flex-col gap-8 md:ml-[20%] md:flex-row md:items-center">
-            <p className="max-w-md text-[1.07rem] text-ink/80">{c.finalCta.body}</p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-              <PrimaryLink href="/talk-to-the-physician">Talk to the Physician</PrimaryLink>
-              <TextLink href="/book-a-consultation">Or book a time directly</TextLink>
+          <div className="mt-10 grid gap-10 md:ml-[20%] md:grid-cols-2 md:items-end">
+            <div>
+              <p className="max-w-md text-[1.07rem] text-ink/80">{c.finalCta.body}</p>
+              <p className="mt-4 font-heading text-[1.45rem] text-nordic">{c.finalCta.invite}</p>
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                <PrimaryLink href="/talk-to-the-physician">Talk to the Physician</PrimaryLink>
+                <OutlineLink href="/talk-to-the-physician">Enquiry form</OutlineLink>
+              </div>
+              <p className="mt-6 text-[0.95rem] text-ink/75">
+                Prefer WhatsApp?{" "}
+                <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="font-bold text-nordic underline decoration-keppel underline-offset-4">
+                  Message us
+                </a>
+              </p>
+              <p className="mt-1 text-[0.95rem] text-ink/75">
+                Enquiring for a family member?{" "}
+                <Link href="/talk-to-the-physician" className="font-bold text-nordic underline decoration-keppel underline-offset-4">
+                  We&apos;d be glad to help.
+                </Link>
+              </p>
             </div>
           </div>
         </div>

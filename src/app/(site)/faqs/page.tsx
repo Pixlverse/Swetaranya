@@ -14,7 +14,7 @@ export default async function FaqsPage() {
 
   return (
     <div className="mx-auto max-w-[88rem] px-5 pb-24 pt-14 sm:px-8 md:pt-20">
-      <h1 className="max-w-3xl text-[clamp(2.6rem,6vw,5rem)] leading-[0.98]">{c.intro.heading}</h1>
+      <h1 className="max-w-3xl text-[clamp(2.1rem,3.96vw,3.3rem)] leading-[0.98]">{c.intro.heading}</h1>
       <div className="mt-14 space-y-16">
         {[...groups.entries()].map(([group, items], i) => (
           <section key={group} className="grid gap-6 md:grid-cols-12" aria-labelledby={`faq-group-${i}`}>

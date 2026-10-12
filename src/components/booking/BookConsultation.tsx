@@ -60,7 +60,7 @@ export function BookConsultation() {
           <li key={s} aria-current={i === step ? "step" : undefined} className="flex items-center gap-3">
             <span
               className={`grid h-9 w-9 place-items-center rounded-pill border text-[0.85rem] font-bold transition-colors duration-300 ${
-                i < step ? "border-keppel bg-cream text-keppel" : i === step ? "border-keppel bg-keppel text-white" : "border-nordic/25 text-ink/55"
+                i < step ? "border-keppel bg-cream text-keppel" : i === step ? "border-keppel bg-keppel text-nordic" : "border-nordic/25 text-ink/55"
               }`}
             >
               {i < step ? "✓" : i + 1}
@@ -128,7 +128,7 @@ export function BookConsultation() {
                 {serverError}
               </p>
             )}
-            <button type="submit" disabled={isSubmitting} className="rounded-pill bg-keppel px-8 py-3.5 font-bold text-white transition-colors hover:bg-nordic disabled:opacity-70">
+            <button type="submit" disabled={isSubmitting} className="rounded-pill bg-keppel px-8 py-3.5 font-bold text-nordic transition-colors hover:bg-nordic hover:text-cream disabled:opacity-70">
               {isSubmitting ? "Saving" : "Continue to times"}
             </button>
           </motion.form>

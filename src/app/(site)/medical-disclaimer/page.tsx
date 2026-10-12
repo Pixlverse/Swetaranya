@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Medical disclaimer" };
 export default function MedicalDisclaimerPage() {
   return (
     <article className="mx-auto max-w-3xl px-5 pb-24 pt-14 sm:px-8 md:pt-20">
-      <h1 className="text-[clamp(2.6rem,6vw,4.6rem)]">Medical disclaimer</h1>
+      <h1 className="text-[clamp(2.1rem,4.04vw,3.1rem)]">Medical disclaimer</h1>
       <div className="prose-swet mt-10">
         <p className="font-heading text-[1.4rem] leading-snug text-nordic">{MEDICAL_DISCLAIMER}</p>
         <h2>No promises of results</h2>

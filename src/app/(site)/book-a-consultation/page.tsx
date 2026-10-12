@@ -15,7 +15,7 @@ export default function BookConsultationPage() {
       <aside className="lg:col-span-4">
         <div className="relative isolate overflow-hidden rounded-soft bg-keppel/10 p-8 lg:sticky lg:top-32">
           <OrnamentPattern opacity={0.06} className="-z-10" />
-          <h1 className="text-[clamp(2.4rem,5vw,4rem)] leading-[0.98]">Book a consultation</h1>
+          <h1 className="text-[clamp(2rem,3.5vw,2.8rem)] leading-[0.98]">Book a consultation</h1>
           <p className="mt-5 text-ink/80">
             About 45 minutes with {PHYSICIAN_NAME}, online or at Swetaranya. Bring your questions, and any reports you have — you&apos;ll get a
             private link to share them after booking.

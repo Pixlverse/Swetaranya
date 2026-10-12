@@ -22,23 +22,23 @@ export default async function ADayPage() {
     <>
       <section className="mx-auto grid max-w-[88rem] gap-10 px-5 pb-12 pt-10 sm:px-8 md:pt-16 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <h1 className="text-[clamp(2.6rem,6.4vw,5.4rem)] leading-[1] tracking-[-0.02em]">{c.intro.heading}</h1>
+          <h1 className="text-[clamp(2.1rem,4.15vw,3.5rem)] leading-[1] tracking-[-0.02em]">{c.intro.heading}</h1>
           <p className="mt-8 max-w-xl text-[1.1rem] text-ink/80">{c.intro.body}</p>
         </div>
         {/* the span of the day, set as type */}
         <p className="self-end font-heading leading-[0.9] tabular-nums lg:col-span-4 lg:col-start-9 lg:text-right" aria-label={`From ${first} to ${last}`}>
-          <span className="block text-[clamp(4rem,9vw,7.5rem)] text-keppel">{first}</span>
+          <span className="block text-[clamp(2.8rem,5.46vw,4.55rem)] text-keppel">{first}</span>
           <span className="block pr-2 text-[1.2rem] italic text-terracotta" aria-hidden>
             to
           </span>
-          <span className="block text-[clamp(4rem,9vw,7.5rem)] text-nordic">{last}</span>
+          <span className="block text-[clamp(2.8rem,5.46vw,4.55rem)] text-nordic">{last}</span>
         </p>
       </section>
 
       <section id="hour-by-hour" className="scroll-mt-32 py-12 sm:px-8 md:py-16" aria-labelledby="moments-heading">
         <div className="mx-auto max-w-[88rem]">
           <div className="mb-10 grid gap-4 px-5 sm:px-0 md:grid-cols-12">
-            <h2 id="moments-heading" className="text-[clamp(2rem,4vw,3.2rem)] md:col-span-6">
+            <h2 id="moments-heading" className="text-[clamp(1.8rem,3vw,2.4rem)] md:col-span-6">
               {c.moments.heading}
             </h2>
             <p className="self-end text-ink/75 md:col-span-5 md:col-start-8">{c.moments.body}</p>
@@ -65,7 +65,7 @@ export default async function ADayPage() {
       </section>
 
       <section className="border-y border-nordic/10 bg-white/60" aria-labelledby="story-heading">
-        <div className="mx-auto grid max-w-[88rem] gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-28">
+        <div className="mx-auto grid max-w-[88rem] gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-24">
           <div className="md:col-span-4">
             <Placeholder label="the guest whose day this is, photographed with consent" shape="drop" className="aspect-[4/5] w-full max-w-xs" />
           </div>
@@ -73,7 +73,7 @@ export default async function ADayPage() {
             <span aria-hidden className="-mb-10 block font-heading text-[7rem] leading-none text-blush">
               &ldquo;
             </span>
-            <h2 id="story-heading" className="text-[clamp(1.9rem,3.6vw,2.9rem)]">
+            <h2 id="story-heading" className="text-[clamp(1.75rem,2.79vw,2.25rem)]">
               {c.story.heading}
             </h2>
             <div className="prose-swet mt-6 font-heading text-[1.3rem] italic leading-relaxed text-nordic/85">
@@ -89,7 +89,7 @@ export default async function ADayPage() {
       </section>
 
       <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24" aria-labelledby="notes-heading">
-        <h2 id="notes-heading" className="text-[clamp(1.9rem,3.6vw,2.9rem)]">
+        <h2 id="notes-heading" className="text-[clamp(1.75rem,2.79vw,2.25rem)]">
           {c.notes.heading}
         </h2>
         <ul className="mt-10 grid gap-10 md:grid-cols-3">
@@ -109,7 +109,7 @@ export default async function ADayPage() {
         <div className="relative isolate mt-20 overflow-hidden rounded-soft bg-keppel/10 px-6 py-12 md:px-12">
           <OrnamentPattern opacity={0.065} className="-z-10" />
           <div className="grid gap-8 md:grid-cols-12 md:items-center">
-            <p className="font-heading text-[clamp(1.6rem,3vw,2.4rem)] leading-tight text-nordic md:col-span-7">
+            <p className="font-heading text-[clamp(1.6rem,2.5vw,2rem)] leading-tight text-nordic md:col-span-7">
               Would a few weeks of days like these help you? The physician can tell you honestly.
             </p>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4 md:col-span-5 md:justify-end">

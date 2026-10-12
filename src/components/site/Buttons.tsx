@@ -8,7 +8,7 @@ export function PrimaryLink({ className = "", ...props }: LinkProps) {
   return (
     <Link
       {...props}
-      className={`inline-flex items-center justify-center rounded-pill bg-keppel px-6 py-3 text-[0.95rem] font-bold text-white transition-[background-color,transform] duration-300 ease-calm hover:bg-nordic active:translate-y-px ${className}`}
+      className={`inline-flex items-center justify-center rounded-pill bg-keppel px-6 py-3 text-[0.95rem] font-bold text-nordic transition-[background-color,transform] duration-300 ease-calm hover:bg-nordic hover:text-cream active:translate-y-px ${className}`}
     />
   );
 }
