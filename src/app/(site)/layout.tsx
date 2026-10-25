@@ -10,8 +10,8 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <SiteSplash />
       <UtmCapture />
       <SiteHeader />
-      {/* The nav floats over the page; this offset keeps content clear of it. */}
-      <main id="main" className="min-h-[60vh] pt-24 sm:pt-28">
+      {/* The nav floats over the page; this offset keeps content clear of it (and of the top bar on wide screens). */}
+      <main id="main" className="min-h-[60vh] pt-24 sm:pt-28 min-[1360px]:pt-36">
         <PageTransition>{children}</PageTransition>
       </main>
       <SiteFooter />
