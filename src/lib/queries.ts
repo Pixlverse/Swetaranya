@@ -3,6 +3,7 @@ import { connectDB } from "./db";
 import { plain } from "./serialize";
 import { Condition, Ebook, JournalPost, PageContent, Testimonial, Therapy, Video, PUBLISHABLE_TESTIMONIAL_FILTER } from "@/models";
 import { PAGE_DEFAULTS, type PageKey } from "@/content/pages";
+import { testimonials as SEED_TESTIMONIALS } from "@/content/seed-data";
 
 type Img = { url?: string | null; alt?: string | null } | null | undefined;
 
@@ -99,7 +100,15 @@ export async function getTestimonials(limit = 3): Promise<TestimonialView[]> {
   const real = await Testimonial.find(PUBLISHABLE_TESTIMONIAL_FILTER).sort({ updatedAt: -1 }).limit(limit).select("patientName country condition quote isPlaceholder").lean();
   if (real.length) return plain(real) as unknown as TestimonialView[];
   const placeholders = await Testimonial.find({ isPlaceholder: true }).limit(limit).select("patientName country condition quote isPlaceholder").lean();
-  return plain(placeholders) as unknown as TestimonialView[];
+  const found = plain(placeholders) as unknown as TestimonialView[];
+  // Only placeholders here, never real stories, so topping up from the seed can't mix the two.
+  const seen = new Set(found.map((t) => t.patientName));
+  return [...found, ...placeholderTestimonials(limit).filter((t) => !seen.has(t.patientName))].slice(0, limit);
+}
+
+/** The labelled seed placeholders, for when the database has none (or can't be reached) — never an empty section. */
+export function placeholderTestimonials(limit = 3): TestimonialView[] {
+  return SEED_TESTIMONIALS.slice(0, limit).map((t, i) => ({ _id: `placeholder-${i}`, ...t, isPlaceholder: true }));
 }
 
 export type VideoView = {

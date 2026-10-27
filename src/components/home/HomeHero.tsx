@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { LotusMandala } from "@/components/brand/LotusMandala";
 
 type Props = {
   eyebrow: string;
@@ -17,11 +16,11 @@ type Props = {
 const EASE = [0.22, 0.61, 0.36, 1] as const;
 
 /**
- * Home hero: the family home behind the words, and the "time to…" lines laid over the garden
- * in a frosted panel.
+ * Home hero: the family home behind the words, and the "time to…" moments set on the right of the
+ * photograph, straight onto the garden with no panel, so the house stays in view.
  *
- * The Home page's one orchestrated moment: the photograph settles, the words rise, then the panel
- * arrives. Pointing at a line in the panel highlights it and draws its icon.
+ * The Home page's one orchestrated moment: the photograph settles, the words rise, then the moments
+ * arrive. Pointing at one lights the keppel thread beside it and draws its icon.
  */
 export function HomeHero({ eyebrow, heading, time, imageUrl, imageAlt }: Props) {
   const reduce = !!useReducedMotion();
@@ -99,49 +98,42 @@ export function HomeHero({ eyebrow, heading, time, imageUrl, imageAlt }: Props) 
           </motion.div>
         </div>
 
-        {/* The day, laid over the garden */}
+        {/* The day, set straight onto the garden: no panel, just a thread with four moments along it. */}
         <motion.div
-          className="lg:col-span-5 lg:col-start-8 lg:self-end"
+          className="relative lg:col-span-4 lg:col-start-9 lg:self-end"
           initial={reduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: at(1.3), duration: 1, ease: EASE }}
         >
-          {/* A sage card in the brandmark's leaf silhouette, a lotus opening from its corner. */}
-          <div className="relative w-fit max-w-full overflow-hidden rounded-[1.5rem] rounded-br-[5rem] rounded-tl-[5rem] bg-[color-mix(in_srgb,var(--color-keppel)_24%,var(--color-cream))] py-9 pl-9 pr-14 shadow-[0_30px_70px_-25px_rgb(0_0_0/0.65)] sm:pl-10 sm:pr-20 lg:ml-auto">
-            {/* One lotus mandala opening from the corner. */}
-            <LotusMandala className="pointer-events-none absolute -bottom-28 -right-28 h-80 w-80 text-nordic opacity-[0.16]" />
-            <ul className="relative space-y-2" onMouseLeave={() => setActive(null)}>
-              {time.map((line, i) => {
-                const on = i === active;
-                return (
-                  <li
-                    key={line}
-                    tabIndex={0}
-                    onMouseEnter={() => setActive(i)}
-                    onFocus={() => setActive(i)}
-                    onBlur={() => setActive(null)}
-                    className="flex cursor-default items-center gap-4 rounded-pill py-1.5 pr-2"
-                  >
-                    <span
-                      aria-hidden
-                      className={`grid h-12 w-12 shrink-0 place-items-center rounded-pill bg-keppel text-cream shadow-[0_8px_18px_-10px] shadow-nordic transition-transform duration-300 ease-calm motion-reduce:transition-none ${
-                        on ? "scale-110" : ""
-                      }`}
-                    >
-                      <MomentIcon index={i} draw={on && !reduce} className="h-[1.45rem] w-[1.45rem]" />
-                    </span>
-                    <span
-                      className={`font-heading text-[1.08rem] leading-snug text-nordic transition-transform duration-300 ease-calm motion-reduce:transition-none ${
-                        on ? "translate-x-1" : ""
-                      }`}
-                    >
-                      {line}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+          {/* Frosted, darkened garden behind the words so they read over the leaves. The mask fades it out at
+              every side, so it has no edge and never becomes a box. */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -inset-x-20 -inset-y-14 -z-10 bg-black/45 backdrop-blur-md [-webkit-mask-image:radial-gradient(closest-side,#000_55%,transparent)] [mask-image:radial-gradient(closest-side,#000_55%,transparent)]"
+          />
+          <ul className="relative border-l border-cream/45" onMouseLeave={() => setActive(null)}>
+            {time.map((line, i) => {
+              const on = i === active;
+              return (
+                <li
+                  key={line}
+                  tabIndex={0}
+                  onMouseEnter={() => setActive(i)}
+                  onFocus={() => setActive(i)}
+                  onBlur={() => setActive(null)}
+                  className="relative flex cursor-default items-center gap-4 py-3 pl-6 outline-none"
+                >
+                  {/* The thread lights beside the moment being pointed at (or focused). */}
+                  <span
+                    aria-hidden
+                    className={`absolute -left-px top-1/2 w-[2px] -translate-y-1/2 bg-keppel transition-[height] duration-500 ease-calm motion-reduce:transition-none ${on ? "h-full" : "h-0"}`}
+                  />
+                  <MomentIcon index={i} draw={on && !reduce} className={`h-7 w-7 shrink-0 transition-colors duration-300 ${on ? "text-keppel" : "text-cream"}`} />
+                  <span className="font-heading text-[1.1rem] font-medium leading-snug text-cream [text-shadow:0_1px_3px_rgb(0_0_0/0.6),0_2px_18px_rgb(0_0_0/0.45)] sm:text-[1.2rem]">{line}</span>
+                </li>
+              );
+            })}
+          </ul>
         </motion.div>
       </div>
     </section>

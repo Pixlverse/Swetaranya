@@ -277,6 +277,12 @@ export const testimonials = [
     condition: "Parkinsonism (companion's account)",
     quote: "Placeholder. Reserved for a family member's account of accompanying a relative, pending consent.",
   },
+  {
+    patientName: "Guest from the UK — placeholder testimonial, pending consented patient story",
+    country: "United Kingdom",
+    condition: "Arthritis",
+    quote: "Placeholder. A returning guest's account of their second stay will go here, once they have given consent.",
+  },
 ];
 
 /** Placeholder films: no real video yet (url empty → the site shows placeholders). */

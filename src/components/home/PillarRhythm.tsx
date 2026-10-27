@@ -57,8 +57,8 @@ export function PillarRhythm({ pillars }: { pillars: readonly Pillar[] }) {
                 animate={{ backgroundColor: on ? SUN : "var(--color-nordic)", scale: on ? 1.3 : 1 }}
                 transition={{ duration: reduce ? 0 : 0.5, ease: EASE }}
               />
-              <h3 className="font-heading text-[clamp(3rem,5.4vw,5rem)] leading-[1] tracking-[-0.03em] text-cream md:mt-12">{p.word}.</h3>
-              <p className="mt-5 max-w-[24rem] text-[1.06rem] leading-relaxed text-cream/80 md:mx-auto">{p.text}</p>
+              <h3 className="font-heading text-[clamp(3rem,5.4vw,5rem)] leading-[1] tracking-[-0.03em] font-medium text-cream [text-shadow:0_2px_24px_rgb(0_0_0/0.45)] md:mt-12">{p.word}.</h3>
+              <p className="mt-5 max-w-[24rem] text-[1.06rem] leading-relaxed text-cream [text-shadow:0_1px_10px_rgb(0_0_0/0.5)] md:mx-auto">{p.text}</p>
             </li>
           );
         })}

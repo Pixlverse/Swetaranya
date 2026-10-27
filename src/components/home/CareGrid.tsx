@@ -42,14 +42,7 @@ export function CareGrid({ heading, rows, largeLabel }: { heading: string; rows:
         <h3 className="text-balance text-[clamp(1.5rem,2.6vw,2.4rem)] lg:whitespace-nowrap leading-[1.1] tracking-[-0.015em] text-nordic">{heading}</h3>
       </div>
 
-      <div className="relative isolate mt-8 md:mt-10">
-      {/* Soft colour behind the glass, so the frosted panes have something to blur. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <span className="absolute -left-10 top-[-10%] h-[22rem] w-[22rem] rounded-full bg-keppel/45 blur-[80px]" />
-        <span className="absolute left-[38%] top-[30%] h-[18rem] w-[24rem] rounded-full bg-keppel/30 blur-[90px]" />
-        <span className="absolute -right-10 bottom-[-10%] h-[22rem] w-[22rem] rounded-full bg-keppel/40 blur-[80px]" />
-        <span className="absolute right-[22%] top-[-6%] h-[12rem] w-[14rem] rounded-full bg-nordic/15 blur-[70px]" />
-      </div>
+      <div className="mt-8 md:mt-10">
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 md:gap-4" onMouseLeave={() => setActive(null)}>
         {rows.map((r, i) => {
           const on = active === i;
@@ -60,7 +53,7 @@ export function CareGrid({ heading, rows, largeLabel }: { heading: string; rows:
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
               onBlur={() => setActive(null)}
-              className="relative flex min-h-[12rem] flex-col overflow-hidden rounded-[1.5rem] border border-cream/80 bg-cream/40 p-6 shadow-[inset_0_1px_0_rgb(255_255_255/0.9),0_12px_32px_-16px_rgb(29_57_60/0.25)] backdrop-blur-xl backdrop-saturate-150 outline-offset-[-3px] sm:min-h-[15.5rem] md:p-7"
+              className="relative flex min-h-[12rem] flex-col overflow-hidden rounded-[1.5rem] border border-cream/80 bg-[linear-gradient(160deg,color-mix(in_srgb,var(--color-keppel)_26%,var(--color-cream)),color-mix(in_srgb,var(--color-keppel)_14%,var(--color-cream)))] p-6 shadow-[inset_0_1px_0_rgb(255_255_255/0.85),0_14px_30px_-18px_rgb(29_57_60/0.35)] outline-offset-[-3px] sm:min-h-[15.5rem] md:p-7"
             >
               <motion.span
                 aria-hidden
@@ -80,7 +73,7 @@ export function CareGrid({ heading, rows, largeLabel }: { heading: string; rows:
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 initial={false}
-                animate={{ opacity: on ? 0.32 : 0.16, rotate: on && !reduce ? -4 : 0 }}
+                animate={{ opacity: on ? 0.38 : 0.22, rotate: on && !reduce ? -4 : 0 }}
                 transition={{ duration: reduce ? 0 : 0.5, ease: EASE }}
               >
                 {ICONS[i % ICONS.length].map((d, k) =>

@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { PageTransition } from "@/components/site/PageTransition";
 import { UtmCapture } from "@/components/site/UtmCapture";
 import { SiteSplash } from "@/components/site/SiteSplash";
+import { FloatingBook } from "@/components/site/FloatingBook";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,6 +16,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <PageTransition>{children}</PageTransition>
       </main>
       <SiteFooter />
+      <FloatingBook />
     </>
   );
 }

@@ -7,6 +7,7 @@ import { Pending } from "@/components/site/Pending";
 import { ReadMore } from "@/components/site/ReadMore";
 import { LifeIcon } from "@/components/life/LifeIcons";
 import { DayArc } from "@/components/life/DayArc";
+import { PrepPath } from "@/components/life/PrepPath";
 
 export const metadata: Metadata = {
   title: "Life at Swetaranya",
@@ -325,27 +326,8 @@ export default function LifeAtSwetaranyaPage() {
           <h2 id="arrive-heading" className="mt-3 text-[clamp(1.9rem,3vw,2.7rem)] leading-[1.05] tracking-[-0.02em]">
             {c.arrive.heading}
           </h2>
-          <ol className="mt-8 grid gap-3">
-            {c.arrive.steps.map((s, i) => (
-              <li key={s.short} className="flex items-center gap-4 rounded-[1.1rem] border border-nordic/12 bg-keppel/[0.06] px-5 py-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-pill bg-nordic font-heading text-[1.05rem] text-cream">{i + 1}</span>
-                <span className="font-heading text-[1.15rem] text-nordic">{s.short}</span>
-              </li>
-            ))}
-          </ol>
-          <ReadMore label={c.arrive.more} className="mt-8">
-            <ol className="space-y-5">
-              {c.arrive.steps.map((s, i) => (
-                <li key={s.lead} className="leading-relaxed text-ink/80">
-                  <strong className="font-heading font-semibold text-nordic">
-                    {i + 1}. {s.lead}
-                  </strong>{" "}
-                  {s.text}
-                </li>
-              ))}
-            </ol>
-            <p className="mt-6 rounded-[1rem] border-l-2 border-terracotta bg-blush/10 px-5 py-4 text-[0.98rem] text-ink/80">{c.arrive.caution}</p>
-          </ReadMore>
+          <PrepPath steps={c.arrive.steps} />
+          <p className="mt-10 rounded-[1rem] border-l-2 border-terracotta bg-blush/10 px-5 py-4 text-[0.98rem] text-ink/80">{c.arrive.caution}</p>
         </div>
 
         <div id="travel" className="scroll-mt-28 rounded-[2rem] bg-keppel/10 p-6 sm:p-8 md:p-10" aria-labelledby="travel-heading">

@@ -40,7 +40,6 @@ const NAV: Item[] = [
   { label: "Blog", href: "/journal" },
   { label: "Contact", href: "/talk-to-the-physician" },
 ];
-const CTA: NavLink = { href: "/book-a-consultation", label: "Book an Online Consultation" };
 
 const TOP_BAR = ["An Ayurvedic home hospital in Tirur, Kerala", "Since 2011", "Patients from nearly 50 countries"];
 
@@ -292,12 +291,6 @@ export function SiteHeader() {
             </nav>
 
             <div className="flex items-center gap-1 sm:gap-2">
-              <Link
-                href={CTA.href}
-                className="group rounded-pill bg-cream px-4 py-3.5 text-[0.85rem] font-bold text-nordic transition-colors duration-300 hover:bg-keppel hover:text-nordic sm:px-6 sm:py-4 sm:text-[0.95rem]"
-              >
-                <RollLabel>{CTA.label}</RollLabel>
-              </Link>
               <button
                 type="button"
                 className="grid h-12 w-12 shrink-0 place-items-center rounded-pill text-cream transition-colors hover:bg-cream/10 min-[1360px]:hidden"
