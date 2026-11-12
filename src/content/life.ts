@@ -13,7 +13,11 @@ export const LIFE = {
   place: {
     label: "The place",
     heading: "A home, where healing becomes part of daily life.",
-    body: "Swetaranya is a residential Ayurvedic treatment centre in Kerala. You stay in a traditional family home, surrounded by fields, the family temple, the sarpakkavu and its pond. Your days follow the rhythm of Ayurveda: therapies, food cooked for your condition, rest, conversation and quiet.",
+    paragraphs: [
+      "Swetaranya is a residential Ayurvedic treatment centre ( a home hospital) in Kerala, set within the traditional surroundings of Veluthat Mana. Life here has always been closely connected to nature. The agricultural landscape, family temple, sacred groves (kavukal) and numerous ponds form part of a natural ecosystem that has been preserved and cared for across generations. Co-existing and respecting the rhythm of nature is a part of life at Swetaranya.",
+      "Your stay brings together different aspects of healing. Along with Ayurvedic therapies planned for your condition, your meals follow a diet suited to your treatment. There is time for proper rest, conversations with your physician and the friendships that grow through everyday interactions. The surroundings offer room to enjoy nature, while a more balanced daily routine helps you reconnect with yourself.",
+      "Here, healing is not limited to the hours spent receiving treatment. It becomes part of how you eat, rest, interact and spend your day. The care you receive, the people you meet and the environment you live in all come together to shape your experience at Swetaranya.",
+    ],
     icons: ["Nature all around", "A traditional home", "Only a few patients"],
     note: "a place that feels like home",
     more: "Why a home",
@@ -93,7 +97,7 @@ export const LIFE = {
   everyday: {
     label: "The everyday",
     heading: "A day that supports your healing.",
-    body: "Your day has a gentle rhythm, with time for therapies, fresh food, rest and quiet. Medicine is only part of it. How you eat, rest and sleep matters just as much, and your part in that is as important as the physician’s.",
+    body: "Each day at Swetaranya is planned around your treatment and well-being. Along with your prescribed therapies, the right food, quality rest, good sleep and time with your physician all have a place in your routine. The way you care for yourself between treatments matters too. Gradually, these everyday habits become part of how you understand and look after your health.",
     times: [
       { when: "Early morning", what: "Walk, yoga or quiet time by the pond", more: "Wake early with the village. Quiet time, a gentle walk or yoga. Rising early sets the body’s rhythm for the day." },
       { when: "Morning", what: "Therapies & medicines", more: "Your therapies and medicines, at the times your physician has chosen. Many therapies work best at particular times of day." },
@@ -125,7 +129,7 @@ export const LIFE = {
 
   stay: {
     label: "Your stay",
-    heading: "A 170-year-old home, with 13 rooms.",
+    heading: "A 170-year-old home",
     body: "Live in Veluthat Mana, a traditional family home with wooden ceilings, open courtyards and cool verandas. The rooms are simple, clean and quiet, made for rest and recovery.",
     more: "View rooms",
     expandedBefore: "Veluthat Mana was built for this climate long before air conditioning, and it has been our family’s home for 170 years.",
@@ -199,6 +203,40 @@ export const LIFE = {
       "Footwear that is easy to slip on and off",
     ],
     bringNote: "We will tell you before you travel if your treatment needs anything else.",
+  },
+
+  // The document offered this as optional ("Can we add the climate conditions chart?"); added as its own section.
+  climate: {
+    heading: "Best Time for Ayurveda Treatment in Kerala: Climate Guide",
+    intro:
+      "Kerala's weather is very different from the rest of India. It has a long, gentle monsoon, mild winters and a green landscape for most of the year. Here is how the seasons run and who usually visits when.",
+    // `months` is how many months the season spans, used only to size its stretch of the year.
+    seasons: [
+      {
+        when: "December to February",
+        name: "Dry and Pleasant",
+        months: 3,
+        text: "Clear skies, mostly dry days and mild temperatures. This is the most comfortable time of year. Guests from the UK, Germany, France, Switzerland, Russia, Canada and the USA often come at this season.",
+      },
+      {
+        when: "March to May",
+        name: "Warm",
+        months: 3,
+        text: "The warmest months of the year. Pre-monsoon showers begin around April. Ayurveda suggests lighter food, plenty of fluids and gentle, cooling care. Mornings and evenings are best for walks and rest. Guests from Singapore, Malaysia and other warm countries are used to this weather and visit comfortably.",
+      },
+      {
+        when: "June to September",
+        name: "Monsoon",
+        months: 4,
+        text: "Heavy rain, fresh air, green surroundings and slightly lower temperatures. Kerala has long favoured the monsoon for Panchakarma and rejuvenation, especially the Karkidakam month (mid-July to mid-August). Guests from Oman, Saudi Arabia, the UAE, Qatar and Kuwait often come now to escape the intense summer heat at home. Guests from Australia, New Zealand and South Africa also visit from June to August, which is winter back home.",
+      },
+      {
+        when: "October to November",
+        name: "Second Rainy Spell",
+        months: 2,
+        text: "A lighter second rainy season (the northeast monsoon). Thundery showers are common in October and ease through November, and the weather clears by December",
+      },
+    ],
   },
 
   next: {

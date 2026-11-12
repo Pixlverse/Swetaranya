@@ -29,141 +29,301 @@ export const arrivalSteps = [
 ];
 
 export const PAGE_DEFAULTS = {
+  // Home copy, verbatim from Content/Home page.docx. Splitting a sentence group across layout is the only change.
   home: {
     hero: {
-      eyebrow: "An Ayurvedic home hospital in Tirur, Kerala",
-      heading: "An Ayurvedic home hospital, where treatment is part of the day, not the whole day.",
-      time: ["Where there is time to eat properly.", "Time to rest.", "Time to talk to your physician.", "Time to understand your body."],
-      closer: "This is Swetaranya.",
+      eyebrow: "An Ayurvedic home hospital in Kerala, India, near Tirur",
+      heading: "Healing needs more than a prescription.",
+      book: "Book an Online Consultation",
+      walkthrough: "Take the 360° Walkthrough",
       imageUrl: "/hero-bg.png",
       imageAlt: "Veluthat Mana, the family home at Swetaranya, seen through the garden",
     },
     intro: {
-      heading: "The care of an Ayurvedic hospital, in the warmth of a family home.",
-      body: "Where you come to live, heal and learn. Only a few patients stay at a time, so your physician knows you, sees you every day and shapes your Ayurvedic treatment around you, in a 170-year-old family home in Tirur, Kerala.",
-      aside: "You don't come here to be one of many patients. You come as a guest of the home.",
-    },
-    facts: {
-      items: [
-        "Only 13 rooms — a home, not a ward",
-        "Your physician, 2–3 times a day",
-        "Ayurvedic treatment and accommodation under one roof",
-        "A 170-year-old ancestral home",
-        "25+ years of practice, including Kottakkal Arya Vaidya Sala",
-        "Guests from Russia, Italy, Oman, Qatar and across India",
+      paragraphs: [
+        "Most of us know the quick fix: a course of tablets, a few sessions, some relief, and then the same problem a few months later. Ayurveda asks for something different. It asks you to slow down, rest properly, eat well and give your mind some quiet, because that’s when the body begins to heal.",
+        "That’s hard to do in the middle of everyday life. So we made a place where it comes naturally: An Ayurvedic home hospital on a calm, green campus in a village near Tirur, in Malappuram, where days move at an unhurried pace and treatment is part of your day, not the whole of it.",
       ],
-    },
-    thread: {
-      heading: "The Thread of Care",
-      // Labels for the facts, in the order the thread reaches them; each pairs with a fact by its position in "facts".
-      stops: [
-        { label: "170 YEARS", fact: 3 },
-        { label: "13 ROOMS", fact: 0 },
-        { label: "PHYSICIAN 2–3 × DAY", fact: 1 },
-        { label: "TREATMENT + STAY", fact: 2 },
-        { label: "25+ YEARS", fact: 4 },
-        { label: "GUESTS FROM AROUND THE WORLD", fact: 5 },
-      ],
+      aside: "You don’t come here to be one of many patients. Your physician knows you by name.",
     },
     homeHospital: {
       label: "What is a home hospital?",
-      heading: "So, what exactly is an Ayurvedic home hospital?",
+      heading: "A hospital in the care it gives. A home in the way you live.",
       answer:
-        "An Ayurvedic home hospital gives you the treatment of an Ayurvedic hospital. A physician who lives on site, personalised therapies and structured care with accommodation in a family home instead of a ward. At Swetaranya, that home is Veluthat Mana in Tirur, Kerala, and only a few guests stay at a time.",
-      statements: ["It is a hospital in the care it gives you.", "It is a home in the way you live while you are here.", "And it is not a resort."],
-    },
-    partOfDay: {
-      label: "Our approach",
-      heading: "At Swetaranya, Ayurveda is part of your day.",
-      moments: [
-        "You wake up here.",
-        "You have your tea.",
-        "You pray.",
-        "You eat food prepared with care.",
-        "You receive your treatment.",
-        "You speak to your physician.",
-        "You rest.",
-        "You practise yoga.",
-        "You learn a little more about yourself.",
+        "A home hospital gives full hospital care in the setting of a home. At Swetaranya, that means physician-led Ayurvedic treatment, trained therapists and a prescribed diet, in a family home with only 13 rooms. It is not home nursing: you come and stay with us for your treatment.",
+      hospital: [
+        "Say \"hospital\" and most people picture corridors, appointments and a lot of waiting.",
+        "Swetaranya is a hospital, and we take that part seriously. You come for Ayurvedic treatment, planned by an experienced physician and delivered by trained therapists.",
       ],
-      care: "None of these things sits outside the treatment. They are part of your care.",
-      body: "Swetaranya grew from a traditional ancestral home. We have kept that feeling at the centre of the home hospital because we believe Ayurveda is easier to understand when you have the time and space to experience it.",
-      closer: "Not just receive it.",
-    },
-    pillars: {
-      heading: "Live. Heal. Learn.",
-      live: "Experience Ayurveda through food, routine, nature and the everyday rhythm of the home — as one of only a few guests.",
-      heal: "Receive personalised Ayurvedic treatment from a physician who sees you every day and adjusts your care as you respond.",
-      learn: "Understand your body and your habits, and take home a routine you can keep.",
-      closer: "You don't simply come here for treatment.\n\nYou come here to experience another way of living.",
-    },
-    whyHome: {
-      label: "Why a home hospital",
-      heading: "Why not just go to a large Ayurvedic hospital?",
-      intro: "It's a fair question.",
-      body: "Large hospitals have their place. They are built to treat many patients at once, with wards, long corridors, doctors, therapists and structured care.\n\nSwetaranya has doctors, therapists, and structured care too. It is a hospital. But as a home hospital, it is built around something else: the experience of living Ayurveda.\n\nIn a large hospital, you come for treatment. In a home hospital, treatment becomes part of your day. You don't just go from consultation to therapy and back to your room.",
-      difference:
-        "The difference isn't that one treats you and the other doesn't. The difference is what happens around the treatment and how much time your physician has for you.",
-      tableHeading: "Fewer guests. More time. Care that knows your name.",
-      rows: [
-        { large: "Treatment is the centre", home: "Treatment is part of a way of living" },
-        { large: "Many beds, many patients", home: "Only 13 rooms" },
-        { large: "Doctor's rounds, often brief", home: "Your physician sees you 2–3 times a day" },
-        { large: "Your case is one of many", home: "Your treatment changes as you change" },
-        { large: "A ward or hospital room", home: "A room in a family home" },
-        { large: "A hospital kitchen", home: "Food cooked in the family kitchen" },
-        { large: "The treatment plan defines much of your day", home: "Your day brings together treatment, food, rest, movement and learning" },
-        { large: "You are a patient", home: "You are a guest of the family" },
-      ],
-      footnote: "Same purpose. A different experience. Fewer rooms are not a limitation — it is why the care is personal.",
-      quote: "This is how a hospital treatment should be.",
-      quoteBy: "Dr M.A. Razak, Tamil Nadu, treated for Parkinsonism",
-    },
-    physician: {
-      label: "Meet the Physician",
-      heading: "Your Ayurveda begins with a conversation.",
-      lead: "At Swetaranya, your care begins by being heard.",
-      body: "Dr. Thrivikraman Veluthat, Chief Physician, is an Ayurvedic doctor with more than 25 years of practice in Kerala and Oman, including at Kottakkal Arya Vaidya Sala.\n\nHe does not visit Swetaranya on rounds. Swetaranya is his family's ancestral home, Veluthat Mana. He lives here, so he is with you through your stay not only at an appointment.\n\nBefore shaping your treatment, he takes time to understand you: your condition, your habits, your lifestyle and what you need. Then he keeps checking in and adjusts your care as your body responds.",
-      motto: "Understand first. Treat with purpose.",
-    },
-    day: {
-      heading: "A day with only a few guests follows a different rhythm.",
-      body: "Treatment has its place in the day. So do food, prayer, conversation, movement and simply slowing down.",
-      items: [
-        { time: "7:00 AM", title: "Herbal tea", body: "Begin the morning gently with herbal tea." },
-        { time: "7:30 – 9:00 AM", title: "Pooja", body: "A quiet, reflective start to the day." },
-        { time: "9:30 AM", title: "Breakfast", body: "A nourishing breakfast from the family kitchen." },
-        { time: "10:30 AM – 1:00 PM", title: "Your treatment", body: "Personalised therapies, with the physician looking in on you." },
-        { time: "1:15 PM", title: "Lunch", body: "A wholesome meal, then time to rest." },
-        { time: "3:30 PM", title: "Time with your physician", body: "Not a five-minute check. A real conversation about how you slept, what you ate and how your body is responding." },
-        { time: "4:30 PM", title: "Snacks and herbal tea", body: "A light afternoon break." },
-        { time: "6:00 PM", title: "Guided yoga", body: "movement, breath and awareness to close the day." },
-        { time: "7:00 PM", title: "Dinner", body: "A calm evening meal." },
-      ],
-      closer: "More than a timetable — a rhythm built around living, healing and learning.",
+      home: "Treatment is only one part of your day. There's breakfast to sit down to. A quiet corner to rest in. Unhurried time with your doctor, and a campus to walk through when you feel up to it. An evening that doesn't have to be hurried.",
+      notResortLead: "Restful, but not a resort.",
+      notResort:
+        "People come here to get better. Every therapy is authentic Ayurveda, adapted to you, and nothing is sold as a package. Your meals follow your pathyam, the diet Ayurveda prescribes for your condition, and we make sure they are still something to look forward to.",
+      building: "Patients have a building of their own on the campus, used only for their stay. The doctor’s family lives a short walk away, so help is never far.",
+      closer: "That is what we mean by an Ayurvedic home hospital.",
     },
     lifestyle: {
       label: "Lifestyle Check",
       heading: "What does your everyday life say about your health?",
-      body: "In two minutes, look at the eight everyday areas that shape how you feel:",
+      lead: "Before you think about treatment, it helps to look at the life around it.",
+      questions:
+        "How well are you sleeping? How do you feel after a meal? Is there enough movement in your day? Do you ever really rest, or does the day just keep going until you're too tired to do anything else?",
+      body: "The Lifestyle Check takes about two minutes. It looks at eight everyday areas that shape how you feel:",
       areas: ["Sleep", "Food", "Digestion", "Movement", "Stress", "Routine", "Rest", "Energy"],
+      action: "Take the Lifestyle Check",
+    },
+    conditions: {
+      label: "Conditions we treat",
+      heading: "Ayurveda reaches further than most people expect.",
+      paragraphs: [
+        "For many people, Ayurveda means an oil massage, or a set of herbal remedies. In fact, it is a complete system of medicine, with branches that range from general medicine and mental health to children’s health and fertility.",
+        "At Swetaranya, we treat long-standing conditions across seven specialities. Whatever brings you here, we look for the root cause and plan your treatment around you, not the diagnosis alone.",
+      ],
+      conditionsLabel: "Conditions:",
+      specialities: [
+        {
+          name: "Orthopaedics",
+          focus: "Bones, joints and spine.",
+          text: "Pain that has settled into the back, neck or joints, treated with internal medicine, therapies and gentle movement, without surgery.",
+          conditions: ["Spine problems", "Arthritis"],
+        },
+        {
+          name: "Neurology",
+          focus: "Brain and nerves.",
+          text: "Patient, long-term care to support recovery after a stroke, and daily life with Parkinson’s.",
+          conditions: ["Paralysis and stroke", "Parkinson’s disease"],
+        },
+        {
+          name: "Dermatology",
+          focus: "Skin and allergy.",
+          text: "Skin problems often begin on the inside, so we treat the digestion, diet and stress behind them as well as the skin itself.",
+          conditions: ["Psoriasis", "Skin diseases", "Allergies"],
+        },
+        {
+          name: "Gastroenterology",
+          focus: "Digestion and gut.",
+          text: "In Ayurveda, good health starts with digestion. Care for the acidity, IBS and constipation that keep coming back.",
+          conditions: ["Gut disorders"],
+        },
+        {
+          name: "Lifestyle diseases",
+          focus: "Metabolism and weight.",
+          text: "Treatment that works alongside the daily habits that matter most: food, sleep, movement and routine.",
+          conditions: ["Diabetes", "Weight loss"],
+        },
+        {
+          name: "Gynaecology",
+          focus: "Women’s health.",
+          text: "Gentle, personalised care for hormonal balance and fertility.",
+          conditions: ["Female infertility", "PCOS and PCOD"],
+        },
+        {
+          name: "Mental health",
+          focus: "Mind and wellbeing.",
+          text: "Time, quiet and treatment to help a tired or anxious mind find its balance again.",
+          conditions: ["Stress", "Mental health"],
+        },
+      ],
+      action: "Book an Online Consultation",
+    },
+    difference: {
+      label: "Why Swetaranya is different",
+      heading: "The treatment matters. So does everything around it.",
+      intro:
+        "Swetaranya is an Ayurvedic hospital in Kerala, led by one of the state’s leading Ayurvedic physicians, with trained therapists and careful clinical care. What sets it apart is the life around the treatment, and how much time your physician has for you.",
+      groups: [
+        {
+          word: "Heal",
+          items: [
+            {
+              lead: "A doctor who doesn’t clock out.",
+              text: "Dr. Thrivikraman and his family live on the campus. Swetaranya isn’t somewhere he comes to work; it is where his life is. He sees you every day and adjusts your care as you respond.",
+            },
+            {
+              lead: "Getting to the root.",
+              text: "Pain, a rash, poor sleep: these are often signals of something deeper. Your physician looks for what sets things off and treats it there, so the problem is less likely to return.",
+            },
+            {
+              lead: "Care that fits you.",
+              text: "A diagnosis tells us what is wrong, not who you are. Your treatment is shaped around your body type (prakriti), digestion, state of mind and any other health concerns. Nobody here follows a fixed package.",
+            },
+            {
+              lead: "Only 12 rooms, by choice.",
+              text: "We could take more people. We would rather know each one. With so few patients, there's room to know the person behind the illness.",
+            },
+          ],
+        },
+        {
+          word: "Live",
+          items: [
+            {
+              lead: "A campus with room to breathe.",
+              text: "Swetaranya sits on a large, eco-friendly campus in a quiet village. There is farmland, a family temple, a sarpakkavu (sacred serpent grove) with its pond, and a medicinal garden where many of the herbs for our medicines are grown. The quiet here is real, and it is part of the treatment.",
+            },
+            {
+              lead: "Food you’ll look forward to.",
+              text: "Meals follow your pathyam, the diet Ayurveda prescribes for your condition. At Swetaranya, we see food as medicine and an important part of the healing process. We focus on serving pure, clean and nourishing meals, prepared with locally sourced ingredients wherever possible. Within your prescribed diet, we work to keep every meal tasty, fresh and varied.",
+            },
+            {
+              lead: "Time between treatments.",
+              text: "There's no rigid timetable. Away from the usual demands of daily life, you can focus on yourself, reconnect with your needs and find a routine that feels more balanced. Rest, read, walk around the campus, sit quietly, or simply enjoy some time to yourself and the people around you.",
+            },
+          ],
+        },
+        {
+          word: "Learn",
+          items: [
+            {
+              lead: "Understand what your body is telling you.",
+              text: "Every day you sit down with your physician to talk about your progress, your habits and how you're feeling. You come to understand your treatment as well as receive it.",
+            },
+            {
+              lead: "Take something home.",
+              text: "You leave knowing more about your body and your routine, with lifestyle practices you can keep up after your stay.",
+            },
+          ],
+        },
+      ],
+      closing: [
+        "Healing, living and learning happen together here, as three parts of the same stay.",
+        "A physician-led approach to Ayurveda, within a home that gives you room to focus on yourself.",
+      ],
+      action: "Discover the Swetaranya Way",
+    },
+    journey: {
+      label: "How we heal",
+      title: "Your Consultation Journey",
+      heading: "Your care starts before you travel.",
+      intro:
+        "Maybe you're reading this from another part of India, or from a country far away. Maybe you've lived with this condition for years, and there's a folder of reports and a list of questions nobody has had time to answer. You don't have to decide anything on your own.",
+      first: {
+        step: "Step 1",
+        title: "Treatment Preparation",
+        sub: "Before you come to Swetaranya",
+        items: [
+          { lead: "Talk to us from home.", text: "Start with an online consultation. Tell us what has been troubling you, for how long, and what you hope will change." },
+          { lead: "Share your previous records.", text: "Reports, scans, prescriptions, details of earlier treatment and any medicines you take now." },
+          {
+            lead: "A detailed evaluation.",
+            text: "The doctor goes through your records and asks about your health, your food habits and your daily routine. Together you decide whether a stay at Swetaranya is right for you.",
+          },
+          {
+            lead: "A preparation routine, if you need one.",
+            text: "Based on your health, lifestyle and current routine, your physician may recommend changes to your diet, daily habits and sleep schedule to help prepare your body. Medication may also be prescribed when necessary for patients from India. Every recommendation is discussed with you beforehand, so you understand what is needed, why it matters and how to prepare for your arrival.",
+          },
+        ],
+      },
+      arrive: "You arrive at Swetaranya",
+      steps: [
+        {
+          step: "Step 2",
+          title: "Root Cause Analysis",
+          text: "Now your physician examines you in person. Records only tell part of the story, so the aim is to look past the symptoms and find the imbalance underneath them.",
+        },
+        {
+          step: "Step 3",
+          title: "Treatment Planning",
+          text: "From what is found, your physician prepares a plan for you alone: your therapies, medicines, food and daily routine. You'll hear what each part involves and how your progress will be reviewed.",
+        },
+        {
+          step: "Step 4",
+          title: "Guided Healing Plan",
+          text: "Therapies, diet guidance and lifestyle correction, with your physician seeing you every day and adjusting as you respond. When it's time to leave, you go home knowing how to carry it on.",
+        },
+      ],
+      closer: "You don't need to know everything before you contact us. That's what the first conversation is for.",
+      action: "Book an Online Consultation",
+    },
+    physician: {
+      label: "Meet the Physician",
+      heading: "The doctor is not just visiting.",
+      lead: "Dr Thrivikraman Veluthat, Chief Physician, lives on the Swetaranya campus with his family.",
+      paragraphs: [
+        "One of Kerala’s leading Ayurvedic physicians, he has practised for 36 years, in Kerala and Oman. Today he practises on the campus his family has lived on for generations.",
+        "That changes what a stay feels like. There is no rushing in for an appointment and no waiting until tomorrow. Swetaranya is part of his family’s everyday life, so he is around; he sees you every day, and your treatment changes as your body does.",
+      ],
+      timeHeading: "Time with your physician",
+      timeIntro: "Beyond regular consultations, you spend time with your physician, discuss your progress and understand your treatment better, it adds up:",
+      time: [
+        { lead: "A long first conversation.", text: "Often one to two hours." },
+        { lead: "Visits during your treatment.", text: "He looks in to see how your body responds to the treatment." },
+        { lead: "Every day after that.", text: "Rounds, check-ins and, often, an unhurried evening conversation." },
+      ],
+      after: [
+        "The conversations go beyond your illness. Your physician takes time to understand your lifestyle, daily habits and overall well-being, including your physical and mental health. These conversations help build a clearer picture of your health, understand the factors that may be affecting it and shape a treatment plan around your individual needs.",
+        "They also give you a better understanding of your own health, helping you recognise habits that may need attention and make practical changes to your daily routine. Over time, you begin to look at your health and lifestyle differently, with greater awareness of the choices that support your well-being.",
+      ],
+      motto: "Understand first. Treat with purpose.",
+      action: "Meet Dr. Thrivikraman",
+    },
+    day: {
+      label: "A Day at Swetaranya",
+      heading: "A day with room to breathe.",
+      body: "Mornings at Swetaranya begin early, setting a positive tone for the day ahead. The fresh morning air, a cup of herbal tea and the calm of nature will give you a refreshing start. Your treatment fits around your plan, since some therapies are best given early and others come later. The rest of the day is yours to enjoy wholesome meals, an afternoon conversation with your physician and yoga towards evening. As the days go by, familiar faces become friends, conversations get longer and the place begins to feel like home. There is time to slow down, connect with yourself and enjoy the simple moments that often get lost in everyday life.",
+      intro: "The exact schedule depends on your treatment plan, but a typical day looks something like this:",
+      // `at` only places a moment without a clock time on the clock face; the page shows `time` as written.
+      items: [
+        { time: "7:00 AM", title: "Herbal tea", body: "A gentle start to the morning." },
+        {
+          time: "Early morning",
+          at: "8:00 AM",
+          title: "Your treatment",
+          body: "Some therapies are best given early, so your treatment may begin before breakfast. Others follow later in the morning. Your physician sets the time and the length.",
+        },
+        { time: "9:30 AM", title: "Breakfast", body: "A nourishing balanced breakfast from Swetaranya's kitchen." },
+        { time: "Late morning", at: "11:00 AM", title: "Time for yourself", body: "Once your treatment is done, the morning is yours. Rest, read or sit quietly outside." },
+        { time: "1:15 PM", title: "Lunch", body: "A wholesome meal, then a slow afternoon." },
+        {
+          time: "3:30 PM",
+          title: "Time with your physician",
+          body: "Not a five-minute check. Time for your physician to understand how you live and how you are in body and mind, so your treatment keeps fitting you.",
+        },
+        { time: "4:30 PM", title: "Snacks and herbal tea", body: "A light afternoon break." },
+        { time: "6:00 PM", title: "Guided yoga", body: "Movement, breath and awareness, suited to you." },
+        { time: "7:00 PM", title: "Dinner", body: "A calm meal as the day comes to a close." },
+      ],
+      note: "None of this replaces medical care. It is the setting that care takes place in.",
+      action: "Explore a Day at Swetaranya",
     },
     theHome: {
       label: "The Home",
-      heading: "An Ayurvedic home hospital, kept small on purpose.",
-      lead: "This place matters.",
-      body: "Swetaranya began as Veluthat Mana, our family's home for 170 years. We could have turned it into something that looked like every other hospital.",
-      didnt: "We didn't.",
-      stayed: ["The home stayed.", "The trees stayed.", "The quite stayed.", "The feeling of living here stayed."],
-      why: "Because we believe the surroundings matter when you are trying to slow down, recover and pay attention to yourself.",
-      rebuilding:
-        "We are now rebuilding the home in traditional Kerala architecture, with a little more room for guests. We are still keeping it small — 13 rooms — so every guest still has time with the physician.",
-      closer: "The home isn't the backdrop to the treatment. It is part of it.",
+      heading: "This was a home long before it became a place of healing.",
+      paragraphs: [
+        "For 170 years, Veluthat Mana in Vaalamaruthoor, Tirur, has been our family’s home. Generations grew up here, among the fields, the family temple, the sarpakkavu (sacred serpent grove) and its pond.",
+        "Our home deity is Kiratamoorthy, Lord Shiva in his form as a hunter, revered by the family as the one who brings relief from all illness. The family is also the ooralan, the hereditary trustees, of the Vaalamaruthoor Durga Bhagavathy Temple. By tradition, it is one of the 108 Durgalayas consecrated across Kerala by Lord Parasurama.",
+        "Dr Thrivikraman Veluthat left this village to study and practise Ayurveda, and spent many years building his practice in Kerala and abroad. He came back with a clear idea of how he wanted to work: personally, without hurry, in a place where patients could rest as fully as they were treated.",
+        "On 29 May 2011, the family opened Veluthat Mana to patients. Swetaranya began with only a few rooms, and for years we had to turn people away.",
+        "Today, patients come to us from nearly 50 countries. Part of the Mana is being rebuilt in traditional Kerala architecture, with rooms set aside only for patients, so that we can care for more people without losing what makes this place special. We are keeping it small on purpose, so every patient still has real time with the physician.",
+      ],
+    },
+    walkthrough: {
+      heading: "Before you arrive, take a look around.",
+      body: "Maybe you'd like to see where you'll sleep, where your treatment will take place, or what the campus looks like. Walk through Swetaranya from wherever you are: the rooms, the treatment spaces, the dining area, the yoga space and the grounds. Take your time.",
+      line: "A little familiarity can make your first visit more comfortable.",
+      walkthrough: "Take the 360° Walkthrough",
+      explore: "Explore the Home",
+    },
+    guests: {
+      label: "In our guests' words",
+      heading: "Every person who comes here has a story.",
+      body: "Since 2011, patients from nearly 50 countries have stayed with us. They came with different conditions, different questions and different hopes. Here are a few of their stories, in their own words.",
+      quote: "This is how a hospital treatment should be.",
+      quoteBy: "Dr M.A. Razak, Tamil Nadu, treated for Parkinsonism",
+      action: "Read Patient Stories",
     },
     finalCta: {
-      heading: "Slow down. Be heard. Experience Ayurveda differently.",
-      body: "A home hospital. Only a few guests. A physician who knows you. Wholesome food. A slower rhythm.",
-      invite: "Come and stay with us at Swetaranya.",
+      heading: "There is a place for you on our table.",
+      paragraphs: [
+        "Swetaranya has been our family’s home for generations. Today it is also an Ayurvedic home hospital: a physician who knows you, treatment planned around your condition, food that follows your pathyam and time to understand your health.",
+        "Whatever brings you here, we're happy to talk it through and help you find the right way forward.",
+      ],
+      invite: "Slow down. Be heard. Begin your Ayurvedic journey.",
+      book: "Book an Online Consultation",
+      enquire: "Enquiry form",
+      questionLead: "Have a question first?",
+      whatsapp: "Message us on WhatsApp",
+      familyLead: "Enquiring for someone you love?",
+      family: "You are welcome to begin the conversation on their behalf.",
     },
   },
   about: {

@@ -56,21 +56,25 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our story: four moments along one line. */}
+      {/* Our story: read down one column, with the turning points lifted into the margin along a single line. */}
       <section id="our-story" className="scroll-mt-28 bg-keppel/12" aria-labelledby="story-heading">
-        <div className="mx-auto max-w-[88rem] px-5 py-14 sm:px-8 md:py-20">
-          <h2 id="story-heading" className="text-[clamp(2rem,3.4vw,3rem)] leading-[1.05] tracking-[-0.02em]">
-            {c.story.heading}
-          </h2>
-          <ol className="relative mt-10 grid gap-8 border-l border-nordic/20 pl-7 md:mt-12 md:grid-cols-4 md:gap-8 md:border-l-0 md:border-t md:pl-0 md:pt-10">
-            {c.story.stops.map((s, i) => (
-              <li key={s.mark} className="relative">
-                <span
-                  aria-hidden
-                  className={`absolute -left-[2.05rem] top-1.5 h-3 w-3 rounded-pill ring-4 ring-cream md:-top-[2.95rem] md:left-0 ${i === c.story.stops.length - 1 ? "bg-keppel" : "bg-nordic"}`}
-                />
-                <p className="font-heading text-[clamp(1.5rem,2.2vw,2rem)] leading-tight tracking-[-0.015em] text-nordic">{s.mark}</p>
-                <p className="mt-3 text-[1rem] leading-relaxed text-ink/75">{s.text}</p>
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:sticky lg:top-32 lg:col-span-4 lg:self-start">
+            <h2 id="story-heading" className="text-[clamp(2rem,3.4vw,3rem)] leading-[1.05] tracking-[-0.02em]">
+              {c.story.heading}
+            </h2>
+            <Placeholder label="Veluthat Mana and the family temple, an old photograph from the family" shape="arch" className="mt-8 hidden aspect-[3/4] w-full max-w-[20rem] lg:block" />
+          </div>
+          <ol className="border-l border-nordic/20 lg:col-span-8">
+            {c.story.paragraphs.map((s, i) => (
+              <li key={i} className={`relative grid gap-2 pl-7 sm:grid-cols-[9.5rem_minmax(0,1fr)] sm:gap-8 ${i ? "pt-6" : ""}`}>
+                {"mark" in s && (
+                  <>
+                    <span aria-hidden className={`absolute -left-[0.4rem] top-[0.55rem] h-3 w-3 rounded-pill ring-4 ring-[color-mix(in_srgb,var(--color-keppel)_12%,var(--color-cream))] ${i === c.story.paragraphs.length - 3 ? "bg-keppel" : "bg-nordic"} ${i ? "mt-6" : ""}`} />
+                    <p aria-hidden className="font-heading text-[1.3rem] leading-tight tracking-[-0.01em] text-nordic sm:text-right">{s.mark}</p>
+                  </>
+                )}
+                <p className={`text-[1.04rem] leading-relaxed text-ink/80 ${"mark" in s ? "" : "sm:col-start-2"}`}>{s.text}</p>
               </li>
             ))}
           </ol>

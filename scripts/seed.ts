@@ -2,6 +2,8 @@
  * Loads Phase 1 placeholder content into MongoDB.
  *   npm run seed            — upsert content, keep enquiries/bookings
  *   npm run seed -- --fresh — wipe seeded collections first
+ *   npm run seed -- --reset-page=home — replace one page's saved copy with the code defaults
+ *     (use after the client sends new copy for a page; it discards admin edits to that page only)
  */
 import { config } from "dotenv";
 config({ path: ".env.local", quiet: true });
@@ -15,6 +17,7 @@ import { conditions, ebooks, journalPosts, testimonials, therapies, videos } fro
 import { PAGE_DEFAULTS } from "../src/content/pages";
 
 const fresh = process.argv.includes("--fresh");
+const resetPages = process.argv.flatMap((a) => (a.startsWith("--reset-page=") ? a.slice("--reset-page=".length).split(",") : []));
 
 async function main() {
   await connectDB();
@@ -62,6 +65,11 @@ async function main() {
     );
   }
 
+  for (const key of resetPages) {
+    if (!(key in PAGE_DEFAULTS)) throw new Error(`Unknown page "${key}". Pages: ${Object.keys(PAGE_DEFAULTS).join(", ")}`);
+    await PageContent.deleteOne({ pageKey: key });
+    console.log(`Reset page copy: ${key}`);
+  }
   for (const [pageKey, sections] of Object.entries(PAGE_DEFAULTS)) {
     await PageContent.updateOne(
       { pageKey },

@@ -48,6 +48,9 @@ function PendingAction({ children }: { children: string }) {
   );
 }
 
+/** Dry, warm, monsoon, second rains: brand tones only, deepening with the rain. */
+const SEASON_TONES = ["bg-keppel/35", "bg-blush/70", "bg-nordic", "bg-keppel"];
+
 export default function LifeAtSwetaranyaPage() {
   return (
     <>
@@ -84,7 +87,11 @@ export default function LifeAtSwetaranyaPage() {
             <h2 id="place-heading" className="mt-3 text-[clamp(2rem,3.6vw,3.2rem)] leading-[1.05] tracking-[-0.02em]">
               {c.place.heading}
             </h2>
-            <p className="mt-6 max-w-2xl text-[1.1rem] leading-relaxed text-ink/80">{c.place.body}</p>
+            <div className="mt-6 max-w-2xl space-y-4 text-[1.1rem] leading-relaxed text-ink/80">
+              {c.place.paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
             <ul className="mt-8 grid gap-3 sm:grid-cols-3">
               {c.place.icons.map((i) => (
                 <li key={i} className="flex items-center gap-3 rounded-[1rem] border border-nordic/12 bg-cream px-4 py-3.5">
@@ -363,6 +370,35 @@ export default function LifeAtSwetaranyaPage() {
             </ul>
             <p className="mt-4 text-[0.98rem] text-ink/70">{c.travel.bringNote}</p>
           </ReadMore>
+        </div>
+      </section>
+
+      {/* Climate guide: the year as one band, starting in December, each season's stretch sized by its months. */}
+      <section id="climate" className="scroll-mt-28 border-t border-nordic/10" aria-labelledby="climate-heading">
+        <div className="mx-auto max-w-[88rem] px-5 py-16 sm:px-8 md:py-20">
+          <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-12">
+            <h2 id="climate-heading" className="text-[clamp(1.9rem,3.2vw,2.8rem)] leading-[1.06] tracking-[-0.02em] md:col-span-6">
+              {c.climate.heading}
+            </h2>
+            <p className="text-[1.08rem] leading-relaxed text-ink/80 md:col-span-6">{c.climate.intro}</p>
+          </div>
+          <ol
+            className="mt-12 grid gap-8 md:mt-14 md:gap-0 md:[grid-template-columns:var(--cols)]"
+            style={{ "--cols": c.climate.seasons.map((s) => `${s.months}fr`).join(" ") } as React.CSSProperties}
+          >
+            {c.climate.seasons.map((s, i) => (
+              <li key={s.when} className={`group md:px-6 ${i ? "md:border-l md:border-cream" : "md:pl-0"} ${i === c.climate.seasons.length - 1 ? "md:pr-0" : ""}`}>
+                {/* The season's stretch of the year: rain deepens the colour. */}
+                <span
+                  aria-hidden
+                  className={`block h-3 rounded-pill transition-[height] duration-300 ease-calm group-hover:h-5 md:-mx-6 md:rounded-none ${i === 0 ? "md:ml-0 md:rounded-l-pill" : ""} ${i === c.climate.seasons.length - 1 ? "md:mr-0 md:rounded-r-pill" : ""} ${SEASON_TONES[i % SEASON_TONES.length]}`}
+                />
+                <p className="mt-5 text-[0.95rem] font-bold text-keppel">{s.when}</p>
+                <h3 className="mt-1 text-[1.45rem] leading-tight text-nordic">{s.name}</h3>
+                <p className="mt-3 text-[1rem] leading-relaxed text-ink/75">{s.text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 /**
  * About page copy, verbatim from the client's "about us - swetharanya" document.
- * Where the document carried a tracked-change duplicate, only the revised wording is kept.
+ * Where the document carried a tracked-change duplicate, only the revised wording is kept (the "quiet enough for
+ * classical Ayurveda" sentence and "A hospital first.").
  * `{{36}}` marks a figure the client still has to confirm; the page renders it as a pending value.
  */
 export const ABOUT = {
@@ -12,7 +13,7 @@ export const ABOUT = {
   whoWeAre: {
     heading: "Who we are",
     paragraphs: [
-      "Swetaranya is an Ayurvedic home hospital in Kavanchery, near Tirur in Malappuram, Kerala. It combines hospital care with the calm of home on the campus of Veluthat Mana, our family’s 170-year-old ancestral home.",
+      "Swetaranya is an Ayurvedic home hospital in Vaalamaruthoor, near Tirur in Malappuram, Kerala. It combines hospital care with the calm of home on the campus of Veluthat Mana, our family’s 170-year-old ancestral home.",
       "People come here to get better. Many have lived with pain or illness for years, and some have tried other treatments first. Here, they find a physician with time for them, treatment planned around them, and a place quiet enough for classical Ayurveda to do its work.",
     ],
     closer: "You don’t come to Swetaranya for a treatment alone. You come to give your health the time it needs.",
@@ -20,23 +21,42 @@ export const ABOUT = {
 
   story: {
     heading: "Our story",
-    // Each stop of the story keeps the document's own sentences; `mark` is a phrase lifted from them.
-    stops: [
+    // The document's paragraphs in order. `mark` is a phrase lifted from the paragraph, set in the margin.
+    paragraphs: [
       {
         mark: "170 years",
-        text: "For 170 years, Veluthat Mana has been our family’s home. Generations grew up here, among the fields, the family temple, the sarpakkavu and its pond.",
+        text: "For over 170 years, Veluthat Mana in Vaalamaruthoor, Tirur, Keralam has been part of a way of life shaped by nature, tradition and community. It was a home deeply connected to its surroundings and the people around it. For generations, those in the neighbourhood knew they could turn to the Mana when they needed help. Welcoming people and extending a helping hand were simply part of life here.",
       },
       {
-        mark: "Dr Thrivikraman Veluthat",
-        text: "Dr Thrivikraman Veluthat left this village to study and practise Ayurveda, and spent many years building his practice in Kerala and abroad. He came back with a clear idea of how he wanted to work: personally, without hurry, in a place where patients could rest as fully as they were treated.",
+        mark: "Kiratamoorthy",
+        text: "Faith has always been at the heart of that life. The family’s home deity is Kiratamoorthy, Lord Shiva in his form as a hunter, revered by the family as the one who brings relief from all illness. It is a fitting presence in a home that would one day become a place of healing.",
+      },
+      {
+        mark: "108 Durgalayas",
+        text: "The family is also the ooralan, the hereditary trustees who administer the Vaalamaruthoor Durga Bhagavathy Temple. By tradition, the temple is one of the 108 Durgalayas, the Durga temples believed to have been consecrated across Kerala by Lord Parasurama. Looking after the temple, its rituals and the community that gathers there remains part of the family’s responsibility today.",
+      },
+      {
+        text: "Life at Veluthat Mana also reflected a close relationship with nature. Respect for natural resources, mindful living and harmony with the environment were values carried forward through generations. They became part of the Mana’s identity and continue to influence Swetaranya today.",
+      },
+      {
+        text: "The decision to transform the ancestral home into an Ayurvedic hospital grew from this same sense of responsibility towards others. The intention was to extend its tradition of care beyond the local community and reach people living with illness and pain who were seeking treatment and relief.",
       },
       {
         mark: "29 May 2011",
-        text: "On 29 May 2011, the family opened Veluthat Mana to patients. Swetaranya began with only a few rooms, and for years we had to turn people away.",
+        text: "On 29 May 2011, Swetaranya opened its doors as an Ayurvedic healthcare centre. It marked a new chapter for the ancestral home, but not a departure from its roots. The original character of the property was carefully preserved, including its traditional architecture and connection with the natural surroundings.",
+      },
+      {
+        text: "For Swetaranya, retaining this heritage meant more than preserving an old building. It meant carrying forward a way of life that values nature, balance, mindful living and service to others, while giving these values a place within a dedicated healthcare institution.",
       },
       {
         mark: "Today",
-        text: "Today, patients come to us from nearly 50 countries. Part of the mana is being rebuilt in traditional Kerala architecture, with rooms set aside only for patients, so that we can care for more people without losing what makes this place special. We are keeping it small on purpose, so every patient still has real time with the physician.",
+        text: "Today, Swetaranya has 12 dedicated patient rooms and welcomes people seeking Ayurvedic treatment from across India and around the world. Patients stay in a separate building designed in traditional Kerala architectural style, with spaces developed specifically for their accommodation and treatment.",
+      },
+      {
+        text: "Individual patient care remains central to the way Swetaranya works. Each patient’s needs receive attention, with regular interaction with their physician forming an important part of the treatment process.",
+      },
+      {
+        text: "What began as a home that people in the neighbourhood could turn to has grown into an Ayurvedic hospital welcoming patients from much further afield. The setting and its role have evolved, but the underlying commitment remains the same: to care for people in pain and help them find relief through Ayurveda.",
       },
     ],
   },
@@ -139,7 +159,7 @@ export const ABOUT = {
 
   tour: {
     heading: "Take a look around",
-    text: "Before you travel, walk through Swetaranya from wherever you are: the rooms, the treatment spaces, the dining area, the yoga space and the grounds. We would rather you arrived knowing a little about us than finding everything new.",
+    text: "Before you travel, walk through Swetaranya from wherever you are: the rooms, the treatment spaces, the dining area, the yoga space and the grounds. Get familiar with Swetaranya before you arrive.",
     action: "Take the 360° Virtual Tour",
   },
 

@@ -15,7 +15,8 @@ import {
 
 const EASE = [0.22, 0.61, 0.36, 1] as const;
 
-type Item = { time: string; title: string; body: string };
+/** `at` places a moment whose `time` is not a clock time ("Early morning") on the face. */
+type Item = { time: string; at?: string; title: string; body: string };
 
 /** The clock's own time is counted in minutes from 7 in the morning; a full turn of the day is 24 hours. */
 const DAY_START = 7 * 60;
@@ -63,7 +64,7 @@ export function DayClock({ items }: { items: readonly Item[] }) {
   const [hold, setHold] = useState(false);
   const [active, setActive] = useState(0);
 
-  const starts = items.map((d) => startOf(d.time));
+  const starts = items.map((d) => startOf(d.at ?? d.time));
   const hours = starts.map(faceAngle);
   // Each box goes on the side of the clock its hour falls on, ordered top to bottom as the hours sit on the face.
   const sideOf = (h: number) => (h > 0 && h <= 180 ? "right" : "left");

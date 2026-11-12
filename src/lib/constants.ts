@@ -9,6 +9,9 @@ export const PHYSICIAN_SHORT = "Dr. Thrivikraman";
 export const LIFESTYLE_CHECK_DISCLAIMER =
   "The Lifestyle Check is a self-awareness tool to help you notice patterns in your daily life. It is not a medical diagnosis, and it does not replace a consultation with a qualified physician.";
 
+/** The short note under the Lifestyle Check teaser on Home, in the client's own words (Content/Home page.docx). */
+export const LIFESTYLE_CHECK_TEASER_NOTE = "A starting point for understanding your habits. It is not a medical diagnosis.";
+
 /** Shown with every Know Your Constitution screen and result. Never retype per page. */
 export const CONSTITUTION_CHECK_DISCLAIMER =
   "Know Your Constitution is a self-reflection questionnaire based on classical Ayurvedic descriptions of Vata, Pitta and Kapha. It is not a medical diagnosis. Your actual constitution (Prakriti) and current state (Vikriti) can only be assessed in person by a qualified Ayurvedic physician.";
