@@ -3,8 +3,9 @@ type Step = { step: string; title: string; text: string };
 
 /**
  * The consultation journey is a genuine sequence, so its steps keep their numbers. Step 1 happens at home and
- * is given the room its four parts need; a line with the brandmark's drop marks the arrival; the three steps
- * at Swetaranya then read across.
+ * is set in its own block: its title row, then its four parts read across, joined by a dashed line (you are
+ * still at home). A line with the brandmark's drop marks the arrival; the three steps at Swetaranya then read
+ * across beneath it.
  */
 export function ConsultationJourney({
   first,
@@ -17,22 +18,31 @@ export function ConsultationJourney({
 }) {
   return (
     <div>
-      <section className="grid gap-8 lg:grid-cols-12 lg:gap-12" aria-labelledby="journey-step-1">
-        <div className="lg:col-span-4">
-          <StepMark step={first.step} size="text-[clamp(3.6rem,6vw,5.4rem)]" />
-          <h3 id="journey-step-1" className="mt-3 text-[clamp(1.55rem,2.3vw,2rem)] leading-tight text-nordic">
-            {first.title}
-          </h3>
-          <p className="mt-2 text-[1.02rem] text-ink/70">{first.sub}</p>
+      <section
+        className="rounded-bl-[1.25rem] rounded-br-[3rem] rounded-tl-[3rem] rounded-tr-[1.25rem] bg-cream/75 p-7 shadow-[0_24px_60px_-40px_rgb(29_57_60/0.5)] ring-1 ring-nordic/10 sm:p-10 md:p-12"
+        aria-labelledby="journey-step-1"
+      >
+        <div className="flex flex-wrap items-end gap-x-8 gap-y-3 border-b border-nordic/12 pb-8">
+          <StepMark step={first.step} size="text-[clamp(3.6rem,6vw,5rem)]" />
+          <div className="pb-1">
+            <h3 id="journey-step-1" className="text-[clamp(1.55rem,2.3vw,2rem)] leading-tight text-nordic">
+              {first.title}
+            </h3>
+            <p className="mt-1 text-[1.02rem] text-ink/65">{first.sub}</p>
+          </div>
         </div>
-        <ul className="grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:col-span-8">
+
+        {/* The four parts, in order, joined by one dashed line across their tops. */}
+        <ol className="relative mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          <span aria-hidden className="absolute left-[0.4rem] right-[calc(25%-1rem)] top-[0.4rem] hidden border-t-2 border-dashed border-keppel/40 lg:block" />
           {first.items.map((it) => (
-            <li key={it.lead} className="border-t-2 border-keppel/60 pt-4 text-[1.02rem] leading-relaxed text-ink/80">
-              <strong className="block font-heading text-[1.2rem] font-medium text-nordic">{it.lead}</strong>
-              <span className="mt-1.5 block">{it.text}</span>
+            <li key={it.lead} className="relative text-[1rem] leading-relaxed text-ink/80">
+              <span aria-hidden className="relative block h-[0.8rem] w-[0.8rem] rounded-pill bg-keppel ring-4 ring-cream" />
+              <strong className="mt-5 block font-heading text-[1.18rem] font-medium leading-snug text-nordic">{it.lead}</strong>
+              <span className="mt-2 block">{it.text}</span>
             </li>
           ))}
-        </ul>
+        </ol>
       </section>
 
       {/* The arrival: one line across, the drop at its centre. */}

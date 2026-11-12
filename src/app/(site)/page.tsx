@@ -4,8 +4,9 @@ import Image from "next/image";
 import { HomeHero } from "@/components/home/HomeHero";
 import { DayClock } from "@/components/home/DayClock";
 import { LifestyleWheel } from "@/components/home/LifestyleWheel";
-import { SpecialityIndex } from "@/components/home/SpecialityIndex";
+import { SpecialityExplorer } from "@/components/home/SpecialityExplorer";
 import { ConsultationJourney } from "@/components/home/ConsultationJourney";
+import { PillarPanels } from "@/components/home/PillarPanels";
 import { Placeholder } from "@/components/brand/Placeholder";
 import { SymbolDivider } from "@/components/brand/SymbolDivider";
 import { RipplePattern } from "@/components/brand/RipplePattern";
@@ -48,54 +49,42 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* What is a home hospital: the answer first, then the two halves of the heading, each over what it means. */}
-      <section className="mx-auto max-w-[88rem] px-5 pb-20 sm:px-8 md:pb-24" aria-labelledby="hh-heading">
-        <div className="border-t border-nordic/15 pt-14 md:pt-20">
-          <p className="text-[0.95rem] font-bold text-keppel">{c.homeHospital.label}</p>
-          <div className="mt-8 grid gap-6 md:grid-cols-12 md:gap-8">
-            <div aria-hidden className="hidden items-center gap-1.5 self-start md:col-span-3 md:mt-[0.95rem] md:flex">
-              <span className="h-[1.5px] flex-1 rounded-pill bg-keppel" />
-              <svg viewBox="0 0 12 10" className="h-2.5 w-3 shrink-0 fill-keppel">
-                <path d="M0 5c3.4-2.6 6-4.2 8.3-4.2a4.2 4.2 0 0 1 0 8.4C6 9.2 3.4 7.6 0 5Z" />
-              </svg>
-            </div>
-            <p className="text-pretty font-heading text-[clamp(1.25rem,1.95vw,1.7rem)] leading-[1.5] text-nordic/90 md:col-span-9">{c.homeHospital.answer}</p>
+      {/* What is a home hospital: the question and its answer as one header, then a single framed panel —
+          the hospital half, the home half, and "not a resort" running across the foot of both. */}
+      <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24" aria-labelledby="hh-heading">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
+          <div className="lg:col-span-6">
+            <p className="text-[0.95rem] font-bold text-keppel">{c.homeHospital.label}</p>
+            <h2 id="hh-heading" className="mt-3 text-[clamp(2.1rem,3.9vw,3.4rem)] leading-[1.05] tracking-[-0.025em]">
+              <span className="block text-nordic">{hospitalLine}</span>
+              <span className="block text-keppel">{homeLine}</span>
+            </h2>
           </div>
+          <p className="text-pretty text-[1.12rem] leading-relaxed text-ink/80 lg:col-span-6 lg:pb-1">{c.homeHospital.answer}</p>
         </div>
 
-        <h2 id="hh-heading" className="sr-only">
-          {c.homeHospital.heading}
-        </h2>
-        <div className="mt-14 grid gap-12 md:mt-20 md:grid-cols-2 md:gap-0">
-          <div className="md:border-r md:border-nordic/15 md:pr-12">
-            <p aria-hidden className="text-balance font-heading text-[clamp(2rem,3.6vw,3.3rem)] leading-[1.05] tracking-[-0.025em] text-nordic">
-              {hospitalLine}
-            </p>
+        <div className="mt-12 grid overflow-hidden rounded-bl-[1.25rem] rounded-br-[3rem] rounded-tl-[3rem] rounded-tr-[1.25rem] border border-nordic/12 md:mt-14 md:grid-cols-2">
+          <div className="bg-cream p-7 sm:p-10 md:p-12">
+            <HalfIcon kind="hospital" />
             <div className="mt-6 space-y-4 text-[1.06rem] leading-relaxed text-ink/80">
               {c.homeHospital.hospital.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
           </div>
-          <div className="md:pl-12">
-            <p aria-hidden className="text-balance font-heading text-[clamp(2rem,3.6vw,3.3rem)] leading-[1.05] tracking-[-0.025em] text-keppel">
-              {homeLine}
-            </p>
+          <div className="border-t border-nordic/12 bg-keppel/12 p-7 sm:p-10 md:border-l md:border-t-0 md:p-12">
+            <HalfIcon kind="home" />
             <p className="mt-6 text-[1.06rem] leading-relaxed text-ink/80">{c.homeHospital.home}</p>
+          </div>
+          <div className="on-dark grid gap-4 bg-nordic p-7 text-cream sm:p-10 md:col-span-2 md:grid-cols-12 md:items-baseline md:gap-10 md:px-12 md:py-10">
+            <p className="font-heading text-[clamp(1.6rem,2.5vw,2.2rem)] leading-[1.1] text-cream md:col-span-4">{c.homeHospital.notResortLead}</p>
+            <p className="text-[1.06rem] leading-relaxed text-cream/80 md:col-span-8">{c.homeHospital.notResort}</p>
           </div>
         </div>
 
-        {/* Not a resort, set apart on parchment; the patients' own building and the closing line beneath. */}
-        <div className="relative mt-14 overflow-hidden rounded-tl-[3.5rem] rounded-br-[3.5rem] rounded-tr-[1.25rem] rounded-bl-[1.25rem] px-6 py-10 sm:px-10 md:mt-20 md:px-14 md:py-14">
-          <Image src="/parchment.jpg" alt="" fill sizes="(min-width: 1408px) 88rem, 100vw" className="object-cover" />
-          <div className="relative grid gap-6 md:grid-cols-12 md:gap-10">
-            <p className="font-heading text-[clamp(1.7rem,2.8vw,2.4rem)] leading-[1.1] text-nordic md:col-span-4">{c.homeHospital.notResortLead}</p>
-            <p className="text-[1.08rem] leading-relaxed text-ink/85 md:col-span-8">{c.homeHospital.notResort}</p>
-          </div>
-        </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-12 md:items-end md:gap-10">
-          <p className="text-[1.06rem] leading-relaxed text-ink/80 md:col-span-6">{c.homeHospital.building}</p>
-          <p className="font-heading text-[clamp(1.4rem,2.1vw,1.8rem)] leading-snug text-keppel md:col-span-6 md:text-right">{c.homeHospital.closer}</p>
+        <div className="mt-10 grid gap-6 md:grid-cols-2 md:items-end md:gap-0">
+          <p className="text-[1.06rem] leading-relaxed text-ink/80 md:pr-12">{c.homeHospital.building}</p>
+          <p className="font-heading text-[clamp(1.4rem,2.1vw,1.8rem)] leading-snug text-nordic md:pl-12">{c.homeHospital.closer}</p>
         </div>
       </section>
 
@@ -125,25 +114,31 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Conditions we treat: the introduction holds still while the seven specialities are read down beside it. */}
-      <section className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24" aria-labelledby="conditions-heading">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:sticky lg:top-32 lg:col-span-4 lg:self-start">
-            <p className="text-[0.95rem] font-bold text-keppel">{c.conditions.label}</p>
-            <h2 id="conditions-heading" className="mt-3 text-[clamp(2rem,3.4vw,3rem)] leading-[1.05] tracking-[-0.02em]">
-              {c.conditions.heading}
-            </h2>
-            <div className="mt-6 space-y-4 text-[1.04rem] leading-relaxed text-ink/80">
+      {/* Conditions we treat: the claim and its reasons as one header, then the seven specialities to explore. */}
+      <section
+        className="bg-[linear-gradient(to_bottom,var(--color-cream),color-mix(in_srgb,var(--color-keppel)_7%,var(--color-cream)))]"
+        aria-labelledby="conditions-heading"
+      >
+        <div className="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 md:py-24">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
+            <div className="lg:col-span-6">
+              <p className="text-[0.95rem] font-bold text-keppel">{c.conditions.label}</p>
+              <h2 id="conditions-heading" className="mt-3 text-[clamp(2.1rem,3.9vw,3.4rem)] leading-[1.05] tracking-[-0.025em]">
+                {c.conditions.heading}
+              </h2>
+            </div>
+            <div className="space-y-4 text-[1.06rem] leading-relaxed text-ink/80 lg:col-span-6 lg:pb-1">
               {c.conditions.paragraphs.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
-            <PrimaryLink href="/book-a-consultation" className="mt-8">
-              {c.conditions.action}
-            </PrimaryLink>
           </div>
-          <div className="lg:col-span-8">
-            <SpecialityIndex items={c.conditions.specialities} conditionsLabel={c.conditions.conditionsLabel} />
+          <div className="mt-12 md:mt-14">
+            <SpecialityExplorer
+              items={c.conditions.specialities}
+              conditionsLabel={c.conditions.conditionsLabel}
+              action={{ label: c.conditions.action, href: "/book-a-consultation" }}
+            />
           </div>
         </div>
       </section>
@@ -163,23 +158,11 @@ export default async function HomePage() {
             <p className="text-[1.1rem] leading-relaxed text-cream/80 md:col-span-6">{c.difference.intro}</p>
           </div>
 
-          <div className="mt-14 md:mt-16">
-            {c.difference.groups.map((g) => (
-              <section key={g.word} className="grid gap-6 border-t border-cream/20 py-10 md:grid-cols-12 md:gap-10 md:py-12" aria-label={g.word}>
-                <h3 className="font-heading text-[clamp(3rem,6vw,5.2rem)] leading-[0.95] tracking-[-0.04em] text-cream md:col-span-3">{g.word}</h3>
-                <ul className="grid gap-x-10 gap-y-7 sm:grid-cols-2 md:col-span-9">
-                  {g.items.map((it) => (
-                    <li key={it.lead} className="text-[1.02rem] leading-relaxed text-cream/75">
-                      <strong className="block font-heading text-[1.25rem] font-medium text-keppel">{it.lead}</strong>
-                      <span className="mt-1.5 block">{it.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
+          <div className="mt-12 md:mt-14">
+            <PillarPanels groups={c.difference.groups} />
           </div>
 
-          <div className="flex flex-col items-center gap-7 border-t border-cream/20 pt-12 text-center">
+          <div className="mt-14 flex flex-col items-center gap-7 border-t border-cream/20 pt-12 text-center">
             <p className="max-w-4xl text-balance font-heading text-[clamp(1.45rem,2.5vw,2.1rem)] leading-snug text-cream">
               {c.difference.closing.map((line) => (
                 <span key={line} className="block">
@@ -411,5 +394,27 @@ export default async function HomePage() {
         </div>
       </section>
     </>
+  );
+}
+
+/** Line marks for the two halves of the panel: a hospital cross, and the house. */
+function HalfIcon({ kind }: { kind: "hospital" | "home" }) {
+  return (
+    <span aria-hidden className={`grid h-12 w-12 place-items-center rounded-pill ${kind === "hospital" ? "bg-nordic text-cream" : "bg-keppel text-nordic"}`}>
+      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        {kind === "hospital" ? (
+          <>
+            <rect x="4" y="4" width="16" height="16" rx="3.5" />
+            <path d="M12 8.5v7M8.5 12h7" />
+          </>
+        ) : (
+          <>
+            <path d="M3.5 11.5 12 4.5l8.5 7" />
+            <path d="M6 10v9.5h12V10" />
+            <path d="M10 19.5v-5h4v5" />
+          </>
+        )}
+      </svg>
+    </span>
   );
 }
