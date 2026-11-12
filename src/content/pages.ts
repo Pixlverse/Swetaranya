@@ -50,7 +50,7 @@ export const PAGE_DEFAULTS = {
       label: "What is a home hospital?",
       heading: "A hospital in the care it gives. A home in the way you live.",
       answer:
-        "A home hospital gives full hospital care in the setting of a home. At Swetaranya, that means physician-led Ayurvedic treatment, trained therapists and a prescribed diet, in a family home with only 13 rooms. It is not home nursing: you come and stay with us for your treatment.",
+        "A home hospital gives full hospital care in the setting of a home. At Swetaranya, that means physician-led Ayurvedic treatment, trained therapists and a prescribed diet, in a family home with 12 rooms. It is not home nursing: you come and stay with us for your treatment.",
       hospital: [
         "Say \"hospital\" and most people picture corridors, appointments and a lot of waiting.",
         "Swetaranya is a hospital, and we take that part seriously. You come for Ayurvedic treatment, planned by an experienced physician and delivered by trained therapists.",
