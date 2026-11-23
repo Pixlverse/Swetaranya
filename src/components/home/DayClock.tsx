@@ -51,11 +51,26 @@ function at(deg: number, r: number) {
   return { x: Math.round((C + r * Math.cos(a)) * 100) / 100, y: Math.round((C + r * Math.sin(a)) * 100) / 100 };
 }
 
+/** Minutes after 7 AM at which noon falls: everything before it is the morning. */
+const NOON = 12 * 60 - DAY_START;
+
+/** A sun rising over the horizon for the morning, and one setting for the afternoon and evening. */
+function HalfMark({ half }: { half: "am" | "pm" }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 18h18M7 18a5 5 0 0 1 10 0" />
+      {half === "am" ? <path d="M12 3v4M9.5 5.5 12 3l2.5 2.5M4.6 10.6l1.4 1.4M19.4 10.6 18 12" /> : <path d="M12 7v4M9.5 8.5 12 11l2.5-2.5M4.6 10.6l1.4 1.4M19.4 10.6 18 12" />}
+    </svg>
+  );
+}
+
 /**
- * A day here on an ordinary wall clock that keeps running. Each moment of the day sits in a box beside its hour;
- * as the hands reach a moment its box lights and stays lit until the next moment comes round. After dinner the
- * night spins past and the day begins again. Pointing at a box sets the clock to it. With reduced motion the clock
- * stands still until a box is chosen.
+ * A day here on an ordinary wall clock that keeps running. The morning reads down the left of the clock and the
+ * afternoon and evening down the right, each in the order it happens, so the two halves of the day never mix
+ * (7 AM tea and 7 PM dinner share a place on a twelve-hour face). A small window on the face says which half the
+ * hands are in, and only that half's marks stand out on the rim. As the hands reach a moment its box lights and
+ * stays lit until the next moment comes round. After dinner the night spins past and the day begins again.
+ * Pointing at a box sets the clock to it. With reduced motion the clock stands still until a box is chosen.
  */
 export function DayClock({ items }: { items: readonly Item[] }) {
   const reduce = !!useReducedMotion();
@@ -63,14 +78,15 @@ export function DayClock({ items }: { items: readonly Item[] }) {
   const inView = useInView(root, { amount: 0.3 });
   const [hold, setHold] = useState(false);
   const [active, setActive] = useState(0);
+  const [pm, setPm] = useState(false);
 
   const starts = items.map((d) => startOf(d.at ?? d.time));
   const hours = starts.map(faceAngle);
-  // Each box goes on the side of the clock its hour falls on, ordered top to bottom as the hours sit on the face.
-  const sideOf = (h: number) => (h > 0 && h <= 180 ? "right" : "left");
-  const byHeight = (list: number[]) => list.sort((x, y) => -Math.cos((hours[x] * Math.PI) / 180) + Math.cos((hours[y] * Math.PI) / 180) || x - y);
-  const left = byHeight(items.map((_, i) => i).filter((i) => sideOf(hours[i]) === "left"));
-  const right = byHeight(items.map((_, i) => i).filter((i) => sideOf(hours[i]) === "right"));
+  // Morning on the left, afternoon and evening on the right, each in the order the day runs.
+  const inOrder = (list: number[]) => list.sort((x, y) => starts[x] - starts[y] || x - y);
+  const left = inOrder(items.map((_, i) => i).filter((i) => starts[i] < NOON));
+  const right = inOrder(items.map((_, i) => i).filter((i) => starts[i] >= NOON));
+  const isPm = (i: number) => starts[i] >= NOON;
 
   const t = useMotionValue(0);
   const hourHand = useTransform(t, (v) => faceAngle(v));
@@ -81,6 +97,8 @@ export function DayClock({ items }: { items: readonly Item[] }) {
   useMotionValueEvent(t, "change", (v) => {
     const i = momentAt(v);
     if (i !== active) setActive(i);
+    const p = (DAY_START + v) % 1440 >= 720;
+    if (p !== pm) setPm(p);
   });
 
   useAnimationFrame((_, delta) => {
@@ -132,9 +150,24 @@ export function DayClock({ items }: { items: readonly Item[] }) {
     );
   };
 
+  const HALVES = { am: "Morning", pm: "Afternoon and evening" } as const;
+  const heading = (half: "am" | "pm", center = false) => {
+    const lit = (half === "pm") === pm;
+    return (
+      <p className={`flex items-center gap-2.5 font-heading text-[1.2rem] transition-colors duration-500 ${center ? "" : half === "am" ? "flex-row-reverse" : ""} ${lit ? "text-nordic" : "text-nordic/45"}`}>
+        <span className={`grid h-9 w-9 place-items-center rounded-pill transition-colors duration-500 ${lit ? "bg-keppel text-cream" : "bg-nordic/[0.06] text-nordic/50"}`}>
+          <HalfMark half={half} />
+        </span>
+        {HALVES[half]}
+      </p>
+    );
+  };
+
   // A column of boxes hugging the rim: those near the clock's middle stand off, those above and below tuck in.
   const column = (list: number[], side: "left" | "right") => (
-    <ol className={`hidden flex-col gap-2.5 lg:flex ${side === "left" ? "items-end" : "items-start"}`}>
+    <div className={`hidden flex-col gap-4 lg:flex ${side === "left" ? "items-end" : "items-start"}`}>
+      {heading(side === "left" ? "am" : "pm")}
+    <ol className={`flex flex-col gap-2.5 ${side === "left" ? "items-end" : "items-start"}`}>
       {list.map((i, j) => {
         const k = list.length;
         const yf = k > 1 ? ((j - (k - 1) / 2) / ((k - 1) / 2)) * 0.82 : 0;
@@ -143,13 +176,14 @@ export function DayClock({ items }: { items: readonly Item[] }) {
           <li
             key={items[i].time}
             className="w-[15rem] xl:w-[16.5rem]"
-            style={{ translate: `calc(var(--clock) * ${(side === "left" ? 0.36 : -0.36) * tuck}) 0` }}
+            style={{ translate: `calc(var(--clock) * ${(side === "left" ? 0.28 : -0.28) * tuck}) 0` }}
           >
             {box(items[i], i)}
           </li>
         );
       })}
     </ol>
+    </div>
   );
 
   return (
@@ -183,7 +217,7 @@ export function DayClock({ items }: { items: readonly Item[] }) {
             const p = at(h, RIM);
             const on = i === active;
             return (
-              <g key={items[i].time}>
+              <g key={items[i].time} style={{ opacity: on || isPm(i) === pm ? 1 : 0.22, transition: "opacity 500ms" }}>
                 {on && !reduce && (
                   <motion.circle
                     key={`halo-${active}`}
@@ -202,6 +236,14 @@ export function DayClock({ items }: { items: readonly Item[] }) {
             );
           })}
 
+          {/* Which half of the day the hands are in, in a small window like a watch's date. */}
+          <g>
+            <rect x={C - 24} y={C + 58} width="48" height="26" rx="7" fill="var(--color-nordic)" fillOpacity="0.06" stroke="var(--color-nordic)" strokeOpacity="0.25" />
+            <text x={C} y={C + 71.5} textAnchor="middle" dominantBaseline="central" className="fill-nordic font-body text-[14px] font-bold tracking-[0.04em]">
+              {pm ? "PM" : "AM"}
+            </text>
+          </g>
+
           {/* The hands. An unseen full circle makes each group's box the face, so they turn about the centre. */}
           <motion.g style={{ rotate: hourHand }}>
             <circle cx={C} cy={C} r={RIM} fill="none" />
@@ -218,18 +260,19 @@ export function DayClock({ items }: { items: readonly Item[] }) {
       </div>
       {column(right, "right")}
 
-      {/* On phones and tablets the list turns with the clock: the moment showing always comes first, right under
-          the dial, and the rest of the day follows it round. */}
-      <ol className="grid gap-3 sm:grid-cols-2 lg:hidden">
-        {items.map((_, k) => {
-          const i = (active + k) % items.length;
-          return (
-            <motion.li key={items[i].time} layout={!reduce} transition={{ duration: 0.5, ease: EASE }}>
-              {box(items[i], i)}
-            </motion.li>
-          );
-        })}
-      </ol>
+      {/* On phones and tablets the two halves follow the clock, one after the other, each in order. */}
+      <div className="grid gap-8 sm:grid-cols-2 sm:gap-6 lg:hidden">
+        {([["am", left], ["pm", right]] as const).map(([half, list]) => (
+          <div key={half}>
+            {heading(half, true)}
+            <ol className="mt-3 grid gap-3">
+              {list.map((i) => (
+                <li key={items[i].time}>{box(items[i], i)}</li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
