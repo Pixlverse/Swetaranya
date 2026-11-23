@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/brand/Logo";
 import { AirLines } from "@/components/brand/AirLines";
-import { CONTACT_EMAIL, CONTACT_PHONE, MEDICAL_DISCLAIMER } from "@/lib/constants";
+import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE, MEDICAL_DISCLAIMER } from "@/lib/constants";
 import { whatsappLink } from "@/lib/whatsapp";
 
 export function SiteFooter() {
@@ -26,11 +26,9 @@ export function SiteFooter() {
                 <Link href="/contact" className="hover:text-cream">Contact</Link>
               </h2>
               <address className="not-italic leading-relaxed text-cream/80">
-                Swetaranya
-                <br />
-                Kerala, India
-                <br />
-                <span className="text-cream/55">(full address to come)</span>
+                {CONTACT_ADDRESS.map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
               </address>
               <ul className="mt-4 space-y-2">
                 <li>

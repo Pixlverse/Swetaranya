@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { CONTACT_EMAIL, CONTACT_PAGE_LINES } from "@/lib/constants";
+import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PAGE_LINES } from "@/lib/constants";
 import { whatsappLink } from "@/lib/whatsapp";
 
-export const metadata: Metadata = { title: "Contact", description: "Phone numbers, WhatsApp and email for Swetaranya." };
+export const metadata: Metadata = { title: "Contact", description: "Phone numbers, WhatsApp, email and address for Swetaranya." };
 
 /**
  * The numbers are the page: each set large in Fraunces so it can be read and tapped from a phone, with its
- * hours or purpose beneath exactly as the client gave it. Email and WhatsApp follow on a hairline.
+ * hours or purpose beneath exactly as the client gave it. Email and WhatsApp follow, then the postal address.
  */
 export default function ContactPage() {
   return (
@@ -39,6 +39,14 @@ export default function ContactPage() {
           </a>
         </li>
       </ul>
+
+      <address className="mt-12 border-t border-nordic/12 pt-8 text-[1.05rem] not-italic leading-relaxed text-ink/80">
+        {CONTACT_ADDRESS.map((line, i) => (
+          <span key={line} className={`block ${i === 0 ? "font-heading text-[1.3rem] text-nordic" : ""}`}>
+            {line}
+          </span>
+        ))}
+      </address>
     </article>
   );
 }

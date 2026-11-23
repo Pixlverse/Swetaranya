@@ -82,6 +82,17 @@ export const CONTACT_EMAIL = "doctor@swetaranya.com";
 /** The numbers listed on the Contact page, in the client's own words. */
 export const CONTACT_PAGE_LINES = [
   { number: "8891 233 072", tel: "+918891233072", note: "[09:00 am to 06:00 pm IST]" },
-  { number: "9526 348 145", tel: "+919526348145", note: "[09:00 am to 06:00 pm IST]" },
+  { number: "7012 545 291", tel: "+917012545291", note: "[09:00 am to 06:00 pm IST]" },
   { number: "9946 433 072", tel: "+919946433072", note: "[For OP Bookings | Malayalam]" },
+] as const;
+
+/** The postal address, line by line, exactly as the client gave it. */
+export const CONTACT_ADDRESS = [
+  "Swetaranya Ayurvedasram",
+  "Valamaruthoor",
+  "PO Kavancheri",
+  "Via Mangalam, Tirur",
+  "Malappuram District",
+  "Kerala,India",
+  "676561",
 ] as const;
