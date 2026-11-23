@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/brand/Logo";
 import { AirLines } from "@/components/brand/AirLines";
-import { MEDICAL_DISCLAIMER } from "@/lib/constants";
+import { CONTACT_EMAIL, CONTACT_PHONE, MEDICAL_DISCLAIMER } from "@/lib/constants";
 import { whatsappLink } from "@/lib/whatsapp";
 
 export function SiteFooter() {
@@ -22,7 +22,9 @@ export function SiteFooter() {
 
           <div className="grid grid-cols-2 gap-8 text-[0.95rem]">
             <div>
-              <h2 className="mb-4 font-body text-sm font-bold text-keppel">Contact</h2>
+              <h2 className="mb-4 font-body text-sm font-bold text-keppel">
+                <Link href="/contact" className="hover:text-cream">Contact</Link>
+              </h2>
               <address className="not-italic leading-relaxed text-cream/80">
                 Swetaranya
                 <br />
@@ -32,7 +34,10 @@ export function SiteFooter() {
               </address>
               <ul className="mt-4 space-y-2">
                 <li>
-                  <a href="mailto:care@swetaranya.com" className="hover:text-keppel">care@swetaranya.com</a>
+                  <a href={`tel:${CONTACT_PHONE.tel}`} className="hover:text-keppel">{CONTACT_PHONE.display}</a>
+                </li>
+                <li>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-keppel">{CONTACT_EMAIL}</a>
                 </li>
                 <li>
                   <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="hover:text-keppel">

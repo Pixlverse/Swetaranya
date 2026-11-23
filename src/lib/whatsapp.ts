@@ -2,7 +2,7 @@
  * WhatsApp — Phase 1 stub. Builds click-to-chat links now; outbound messages are logged, not sent.
  * TODO: wire WhatsApp Cloud API (WHATSAPP_CLOUD_API_TOKEN + WHATSAPP_PHONE_NUMBER_ID).
  */
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? process.env.WHATSAPP_NUMBER ?? "919000000000";
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? process.env.WHATSAPP_NUMBER ?? "918891233072";
 
 export function whatsappLink(message = "Hello, I would like to know more about staying at Swetaranya.") {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

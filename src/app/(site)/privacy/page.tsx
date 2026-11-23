@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         <h2>Where you came from</h2>
         <p>We note which link or campaign brought you to the site (for example, a search or a social post) so we understand how people find us. This is stored with your enquiry.</p>
         <h2>Your choices</h2>
-        <p>You can ask us to show you, correct or delete what we hold about you at any time by writing to care@swetaranya.com.</p>
+        <p>You can ask us to show you, correct or delete what we hold about you at any time by writing to doctor@swetaranya.com.</p>
       </div>
     </article>
   );

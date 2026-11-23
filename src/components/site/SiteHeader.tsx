@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BrandLogo } from "@/components/brand/Logo";
 import { Pending } from "@/components/site/Pending";
 import { whatsappLink } from "@/lib/whatsapp";
+import { CONTACT_EMAIL, CONTACT_PHONE } from "@/lib/constants";
 
 const EASE = [0.22, 0.61, 0.36, 1] as const;
 
@@ -27,7 +28,7 @@ const HOW_TREATMENT_WORKS: NavLink = { href: "/treatments#journey", label: "How 
 /** The case studies are still to be written: each slot shows its condition and a marked title and country. */
 const CASES = ["Psoriasis", "Paralysis & stroke", "Disc prolapse", "PCOS", "Parkinson's disease", "Diabetes"];
 const ALL_CASES: NavLink = { href: "/experience", label: "View all case studies", note: "Filterable by speciality and condition" };
-const PATIENT_STORIES: NavLink = { href: "/experience", label: "Patient Stories", note: "Written and video, from nearly 50 countries" };
+const PATIENT_STORIES: NavLink = { href: "/experience", label: "Patient Stories", note: "Written and video, from 50+ countries" };
 
 type Item = { label: string; href: string; menu?: "treatments" | "cases" };
 const NAV: Item[] = [
@@ -41,7 +42,7 @@ const NAV: Item[] = [
   { label: "Contact", href: "/talk-to-the-physician" },
 ];
 
-const TOP_BAR = ["An Ayurvedic home hospital in Tirur, Kerala", "Since 2011", "Patients from nearly 50 countries"];
+const TOP_BAR = ["An Ayurvedic home hospital in Tirur, Kerala", "Since 2011", "Patients from 50+ countries"];
 
 /** Link label that rolls up to a second copy on hover — the change is the feedback. */
 function RollLabel({ children }: { children: string }) {
@@ -179,15 +180,19 @@ function NavDropdown({ item, active, reduce }: { item: Item; active: boolean; re
   );
 }
 
-/** Phone, WhatsApp and email: the phone number and email are still to be supplied. */
+/** Phone, WhatsApp and email. */
 function ContactLinks({ className = "" }: { className?: string }) {
   return (
     <span className={`flex flex-wrap items-center gap-x-4 gap-y-1 ${className}`}>
-      <Pending tone="dark" className="text-[0.78rem]">[PHONE NUMBER]</Pending>
+      <a href={`tel:${CONTACT_PHONE.tel}`} className="text-cream/85 hover:text-keppel">
+        {CONTACT_PHONE.display}
+      </a>
       <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="font-bold text-cream underline decoration-keppel decoration-2 underline-offset-4 hover:text-keppel">
         WhatsApp us
       </a>
-      <Pending tone="dark" className="text-[0.78rem]">[EMAIL]</Pending>
+      <a href={`mailto:${CONTACT_EMAIL}`} className="text-cream/85 hover:text-keppel">
+        {CONTACT_EMAIL}
+      </a>
     </span>
   );
 }

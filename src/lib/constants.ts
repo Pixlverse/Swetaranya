@@ -74,3 +74,14 @@ export const HELP_TOPICS = [
 
 export const ACCEPTED_REPORT_TYPES = ["application/pdf", "image/jpeg", "image/png"] as const;
 export const MAX_REPORT_BYTES = 15 * 1024 * 1024;
+
+/** General contact details used across the site (header, footer, policies). Supplied by the client. */
+export const CONTACT_PHONE = { display: "88912 33072", tel: "+918891233072" };
+export const CONTACT_EMAIL = "doctor@swetaranya.com";
+
+/** The numbers listed on the Contact page, in the client's own words. */
+export const CONTACT_PAGE_LINES = [
+  { number: "8891 233 072", tel: "+918891233072", note: "[09:00 am to 06:00 pm IST]" },
+  { number: "9526 348 145", tel: "+919526348145", note: "[09:00 am to 06:00 pm IST]" },
+  { number: "9946 433 072", tel: "+919946433072", note: "[For OP Bookings | Malayalam]" },
+] as const;

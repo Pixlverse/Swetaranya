@@ -293,7 +293,7 @@ export const PAGE_DEFAULTS = {
         "Our home deity is Kiratamoorthy, Lord Shiva in his form as a hunter, revered by the family as the one who brings relief from all illness. The family is also the ooralan, the hereditary trustees, of the Vaalamaruthoor Durga Bhagavathy Temple. By tradition, it is one of the 108 Durgalayas consecrated across Kerala by Lord Parasurama.",
         "Dr Thrivikraman Veluthat left this village to study and practise Ayurveda, and spent many years building his practice in Kerala and abroad. He came back with a clear idea of how he wanted to work: personally, without hurry, in a place where patients could rest as fully as they were treated.",
         "On 29 May 2011, the family opened Veluthat Mana to patients. Swetaranya began with only a few rooms, and for years we had to turn people away.",
-        "Today, patients come to us from nearly 50 countries. Part of the Mana is being rebuilt in traditional Kerala architecture, with rooms set aside only for patients, so that we can care for more people without losing what makes this place special. We are keeping it small on purpose, so every patient still has real time with the physician.",
+        "Today, patients come to us from 50+ countries. Part of the Mana is being rebuilt in traditional Kerala architecture, with rooms set aside only for patients, so that we can care for more people without losing what makes this place special. We are keeping it small on purpose, so every patient still has real time with the physician.",
       ],
     },
     walkthrough: {
@@ -306,7 +306,7 @@ export const PAGE_DEFAULTS = {
     guests: {
       label: "In our guests' words",
       heading: "Every person who comes here has a story.",
-      body: "Since 2011, patients from nearly 50 countries have stayed with us. They came with different conditions, different questions and different hopes. Here are a few of their stories, in their own words.",
+      body: "Since 2011, patients from 50+ countries have stayed with us. They came with different conditions, different questions and different hopes. Here are a few of their stories, in their own words.",
       quote: "This is how a hospital treatment should be.",
       quoteBy: "Dr M.A. Razak, Tamil Nadu, treated for Parkinsonism",
       action: "Read Patient Stories",
